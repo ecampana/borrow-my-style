@@ -1,4 +1,4 @@
-# BorrowMyStyle
+# Borrow My Style
 
 ---
 ## Contents
