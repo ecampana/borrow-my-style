@@ -32,6 +32,60 @@ from sklearn.metrics import (log_loss,  precision_score,
 from IPython.core.display import display
 
 
+# Define summary report
+def summary_report(estimator, X_test, X_train, y_test, y_train):
+    """
+    Summary report listing accuracy, precision, and log loss
+
+    Parameters
+    ----------
+    estimator : array, shape = [n_samples]
+    true class, intergers in [0, n_classes - 1)
+    X_test : array,  shape = [n_samples, n_classes]
+    X_train : array,  shape = [n_samples, n_classes]
+    y_train : array,  shape = [n_samples, n_classes]
+    y_test : array,  shape = [n_samples, n_classes]
+
+    Returns
+    -------
+    None : returns None
+    """
+
+    # Calculate predictions on training and test data
+    y_train_predict = estimator.predict(X_train)
+    y_train_predict_proba = estimator.predict_proba(X_train)
+
+    y_test_predict = estimator.predict(X_test)
+    y_test_predict_proba = estimator.predict_proba(X_test)
+
+    # Print summary report of scores
+    accuracy = accuracy_score(y_train, y_train_predict)
+    print('Accuracy score on train data:', accuracy)
+
+    accuracy = accuracy_score(y_test, y_test_predict)
+    print('Accuracy score on test data:', accuracy, '\n')
+
+    precision = precision_score(y_train, y_train_predict, average=None)
+    print('Precision score on train data:', precision)
+
+    precision = precision_score(y_test, y_test_predict, average=None)
+    print('Precision score on test data:', precision, '\n')
+
+    recall = recall_score(y_train, y_train_predict, average=None)
+    print('Recall score on train data:', recall)
+
+    recall = recall_score(y_test, y_test_predict, average=None)
+    print('Recall score on test data:', recall, '\n')
+
+    logloss = log_loss(y_train, y_train_predict_proba)
+    print('Log loss on train data:', logloss)
+
+    logloss = log_loss(y_test, y_test_predict_proba)
+    print('Log loss on test data:', logloss)
+
+    return None
+
+
 # Extrack estimator name
 def extract_estimator_name(estimator):
 
@@ -161,63 +215,9 @@ def grid_search(estimator, X, y, outer_cv, inner_cv,
     return grid
 
 
-# Define summary report
-def summary_report(estimator, y_test, y_train, X_test, X_train):
-    """
-    Summary report listing accuracy, precision, and log loss
-        
-    Parameters
-    ----------
-    estimator : array, shape = [n_samples]
-    true class, intergers in [0, n_classes - 1)
-    X_test : array,  shape = [n_samples, n_classes]
-    X_train : array,  shape = [n_samples, n_classes]
-    y_train : array,  shape = [n_samples, n_classes]
-    y_test : array,  shape = [n_samples, n_classes]
-
-    Returns
-    -------
-    None : returns None
-    """
-
-    # Calculate predictions on training and test data
-    y_train_predict = estimator.predict(X_train)
-    y_train_predict_proba = estimator.predict_proba(X_train)
-    
-    y_test_predict = estimator.predict(X_test)
-    y_test_predict_proba = estimator.predict_proba(X_test)
-
-    # Print summary report of scores
-    accuracy = accuracy_score(y_train, y_train_predict)
-    print('Accuracy score on train data:', accuracy)
-    
-    accuracy = accuracy_score(y_test, y_test_predict)
-    print('Accuracy score on test data:', accuracy, '\n')
-
-    precision = precision_score(y_train, y_train_predict, average=None)
-    print('Precision score on train data:', precision)
-    
-    precision = precision_score(y_test, y_test_predict, average=None)
-    print('Precision score on test data:', precision, '\n')
-    
-    recall = recall_score(y_train, y_train_predict, average=None)
-    print('Recall score on train data:', recall)
-    
-    recall = recall_score(y_test, y_test_predict, average=None)
-    print('Recall score on test data:', recall, '\n')
-
-    logloss = log_loss(y_train, y_train_predict_proba)
-    print('Log loss on train data:', logloss)
-    
-    logloss = log_loss(y_test, y_test_predict_proba)
-    print('Log loss on test data:', logloss)
-
-    return None
-
-
 # Defined overfitting plot
 def plot_overfitting(estimator, X_train, X_test, y_train, y_test,
-                     bins=50, pos_class=1):
+                     bins=50, pos_class=1, directory='.'):
     """
     Multi class version of Logarithmic Loss metric
 
@@ -232,6 +232,7 @@ def plot_overfitting(estimator, X_train, X_test, y_train, y_test,
     y_test : array, shape = [n_samples, n_classes]
     bins : int, default 50
     pos_class : int, default 1
+    directory : string
 
     Returns
     -------
@@ -242,13 +243,13 @@ def plot_overfitting(estimator, X_train, X_test, y_train, y_test,
     name = extract_estimator_name(estimator)
 
     # check to see if model file exist
-    if not os.path.isfile(str(name)+'.pkl'):
+    if not os.path.isfile(directory+'/'+str(name)+'.pkl'):
         estimator.fit(X_train, y_train)
-        joblib.dump(estimator, str(name)+'.pkl')
+        joblib.dump(estimator, directory+'/'+str(name)+'.pkl')
 
     else:
         print('Using stored model file stored')
-        estimator = joblib.load(str(name)+'.pkl')
+        estimator = joblib.load(directory+'/'+str(name)+'.pkl')
 
     # use subplot to extract axis to add ks and p-value to plot
     fig, ax = plt.subplots(figsize=(8, 6))
