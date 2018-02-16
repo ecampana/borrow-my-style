@@ -248,7 +248,7 @@ def plot_overfitting(estimator, X_train, X_test, y_train, y_test,
         joblib.dump(estimator, directory+'/'+str(name)+'.pkl')
 
     else:
-        print('Using stored model file stored')
+        print('Using stored model file')
         estimator = joblib.load(directory+'/'+str(name)+'.pkl')
 
     # use subplot to extract axis to add ks and p-value to plot
