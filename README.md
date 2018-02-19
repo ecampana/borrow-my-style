@@ -7,10 +7,15 @@
 
 
 # <a name="introductin">Introduction</a>
+Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with Borrow My Style*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, and accessories as well. The purpose of this blog post is to detail the models that were produce to evaluate inventory performance and provide a recommendation system for lenders.
 
-Comming Soon! I am awaiting final approval of blog post from client company (expected by 02-19-18). 
 
-Please have a look through the git repository. The jupyter notebooks describe the analysis.
+
+<div style="text-align:center"><img src ="images/rentability.png" /></div>
+
+*For the purposes of anonymity *Borrow My Style* is a pseudonym for consulting client.
+
+Please have a look through the git repository. The jupyter notebooks describe the analysis in greater detail.
 
 
 ### <a name="about_me">About the Author</a>
