@@ -16,7 +16,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 
 
 
-<div style="text-align:center"><img src ="images/computer.jpg" /></div>
+<div style="text-align:center"><img src ="images/computer.jpg" width="633" height="419" /></div>
 
 *For the purposes of anonymity _Borrow My Style_ is a pseudonym for consulting client.
 
