@@ -4,23 +4,31 @@
 ## Contents
 
 [**1. Introduction**](#introduction)
-[**1. Introduction**](#data)
+[**2. Challenges with the Data**](#data)
+[**3. Feature Engineering**](#feature_engineering)
+[**4. Modeling Rentability**](#modeling_rentability)
+[**5. Model Performance**](#model_performance)
+[**5. Summary**](#summary)
 
+Please have a look through the git repository. The jupyter notebooks describe the analysis in greater detail.
 
 # <a name="introduction">Introduction</a>
-Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, and accessories as well. The purpose of this blog post is to detail the models that were produce to evaluate inventory performance and provide a recommendation system for lenders.
+Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, and accessories as well. The purpose of this blog post is to detail the models that were produced to evaluate inventory performance and provide a recommendation system for lenders.
+
+*For the purposes of anonymity _Borrow My Style_ is a pseudonym for consulting client.
+
+<div style="text-align:center"><img src ="images/computer.jpg" width="317" height="210" /></div>
 
 
 # <a name="data">Challenges with the Data</a>
 
+# <a name="feature_engineering">Feature Engineering</a>
 
+# <a name="modeling_rentability">Modeling Rentability</a>
 
+# <a name="model_performance">Model Performance</a>
 
-<div style="text-align:center"><img src ="images/computer.jpg" width="633" height="419" /></div>
-
-*For the purposes of anonymity _Borrow My Style_ is a pseudonym for consulting client.
-
-Please have a look through the git repository. The jupyter notebooks describe the analysis in greater detail.
+# <a name="summary">Summary</a>
 
 
 ### <a name="about_me">About the Author</a>
