@@ -23,7 +23,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 *For the purposes of anonymity, _Borrow My Style_ is a pseudonym for consulting client.
 
 <div style="text-align:center">
-<img src ="images/computer.jpg" width="317" height="210" /><img src ="images/online closet.jpg" width="317" height="383" />
+<img src ="images/computer.jpg" width="579" height="383" /><img src ="images/online closet.jpg" width="317" height="383" />
 </div>
 
 # <a name="data">Challenges with the Data</a>
