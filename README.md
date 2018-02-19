@@ -18,7 +18,7 @@
 Page under construction. Please have a look through the git repository. The jupyter notebooks are finalized and describe the analysis in greater detail.
 
 # <a name="introduction">Introduction</a>
-Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, and accessories as well. The purpose of this blog post is to detail the models that were produced to evaluate inventory performance and provide a recommendation system for lenders.
+Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, as well as accessories. The purpose of this blog post is to detail the models that were built to evaluate inventory performance and provide a recommendation system for lenders.
 
 <div style="text-align:center">
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
@@ -29,11 +29,11 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 # <a name="data">Challenges with the Data</a>
 [Data cleanining pipeline (notebook link)](https://github.com/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
-This notebook outlines the data cleaning and transformations that were performed on the client company's data for the purposes of analyzing it.
 
-The data is stored on a Heroku PostgreSQL database which we ingest into this notebook and proceed to explore it.
+[//]: # This notebook outlines the data cleaning and transformations that were performed on the client company's data for the purposes of analyzing it.
 
-We drop all columns that are not relevant for identifying inventory trends.
+The company is a young start up with a small technical team and are immensely interested in find ways to explore the data and extract fashion trend that could help lenders. The inventory information is stored on a Heroku PostgreSQL database. 
+
 
 We join the items table to the rental items table to have a more meaningful table which can be used to explore trends of the fashion items ordered.
 
@@ -104,7 +104,7 @@ The last transformation we preform is One-Hot-Encoding of categorical features i
 
 We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on item type, brand, size, and rental price. The reason we are restricted to only these features is that lenders will only be providing this information.
 
-<div style="text-align:center"><img src ="images/rentability classification.jpg" width="388" height="175" /></div>
+<div style="text-align:center"><img src ="images/rentability classification.jpg" width="500" height="226" /></div>
 
 
 We first load the data produced during the previous stages that will serve as our training and test data.
