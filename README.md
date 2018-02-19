@@ -3,17 +3,22 @@
 ---
 ## Contents
 
-[**1. Introduction**](#introductin)
+[**1. Introduction**](#introduction)
+[**1. Introduction**](#data)
 
 
-# <a name="introductin">Introduction</a>
-Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with Borrow My Style*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, and accessories as well. The purpose of this blog post is to detail the models that were produce to evaluate inventory performance and provide a recommendation system for lenders.
+# <a name="introduction">Introduction</a>
+Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, and accessories as well. The purpose of this blog post is to detail the models that were produce to evaluate inventory performance and provide a recommendation system for lenders.
+
+
+# <a name="data">Challenges with the Data</a>
 
 
 
-<div style="text-align:center"><img src ="images/rentability.png" /></div>
 
-*For the purposes of anonymity *Borrow My Style* is a pseudonym for consulting client.
+<div style="text-align:center"><img src ="images/computer.jpg" /></div>
+
+*For the purposes of anonymity _Borrow My Style_ is a pseudonym for consulting client.
 
 Please have a look through the git repository. The jupyter notebooks describe the analysis in greater detail.
 
