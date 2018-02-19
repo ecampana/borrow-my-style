@@ -27,18 +27,44 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 <div style="text-align:center"><img src ="images/online closet.jpg" width="317" height="383" /></div>
 
 # <a name="data">Challenges with the Data</a>
+[data cleanining pipeline](https://github.com/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
+
+This notebook outlines the data cleaning and transformations that were performed on the client company's data for the purposes of analyzing it.
+
+The data is stored on a Heroku PostgreSQL database which we ingest into this notebook and proceed to explore it.
+
+We drop all columns that are not relevant for identifying inventory trends.
+
+We join the items table to the rental items table to have a more meaningful table which can be used to explore trends of the fashion items ordered.
+
+From the orders table we can determine the rental count of each item. This information can be used, for example, to learn how often an item is rented during its listing lifetime.
+
+An interesting quantity to have is the rental revenue of each item which may be used at a later point to evaluate the improvements in company profits when compared to the previous model.
+
+
+The data contains several samples that need to be removed either because there is not enough information for it to be useful or they need to be corrected in one way or another.
+
+In order to determine the lifetime of items we need to know when they were delisted. But most items continue to be rented so in those cases we chose the current date as the date that they were delisted.
+
+Brand names are curated to remove any variablity in their spellings. This reduced the list of brand names by 30%.
+
+The final stage of the data cleaning pipeline is storing the results into cvs files for later use.
+
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="741" height="376" /></div>
 
 # <a name="feature_engineering">Feature Engineering</a>
+[feature engineering](https://github.com/ecampana/borrow-my-style/blob/master/feature-engineering.ipynb)
 
 # <a name="modeling_rentability">Modeling Rentability</a>
-
+[modeling rentability](https://github.com/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)
 <div style="text-align:center"><img src ="images/rentability classification.jpg" width="388" height="175" /></div>
 
 <div style="text-align:center"><img src ="images/rentability.jpg" width="317" height="210" /></div>
 
 # <a name="model_performance">Model Performance</a>
+[model performance](https://github.com/ecampana/borrow-my-style/blob/master/model-performance.ipynb)
+
 
 # <a name="summary">Summary</a>
 
