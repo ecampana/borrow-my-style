@@ -15,7 +15,7 @@
 
 [**5. Summary**](#summary)
 
-Please have a look through the git repository. The jupyter notebooks describe the analysis in greater detail.
+Page under construction. Please have a look through the git repository. The jupyter notebooks are finalized and describe the analysis in greater detail.
 
 # <a name="introduction">Introduction</a>
 Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, and accessories as well. The purpose of this blog post is to detail the models that were produced to evaluate inventory performance and provide a recommendation system for lenders.
@@ -41,6 +41,8 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 # <a name="model_performance">Model Performance</a>
 
 # <a name="summary">Summary</a>
+
+We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand what items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by having a high recall value without needing to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this since unintentially allowing lenders to share items that may not perform as well as they hope will not cause the client company to incur any monetary loss. The consequences are that there may be more lower performing items than what is ideal but overall the fashion catalog should decidely improve with those items that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming apparel.
 
 
 ### <a name="about_me">About the Author</a>
