@@ -19,12 +19,19 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 
 <div style="text-align:center"><img src ="images/computer.jpg" width="317" height="210" /></div>
 
+<div style="text-align:center"><img src ="images/online closet.jpg" width="317" height="210" /></div>
 
 # <a name="data">Challenges with the Data</a>
+
+<div style="text-align:center"><img src ="images/data preperation.jpg" width="317" height="210" /></div>
 
 # <a name="feature_engineering">Feature Engineering</a>
 
 # <a name="modeling_rentability">Modeling Rentability</a>
+
+<div style="text-align:center"><img src ="images/rentability classification.jpg" width="317" height="210" /></div>
+
+<div style="text-align:center"><img src ="images/rentability.jpg" width="317" height="210" /></div>
 
 # <a name="model_performance">Model Performance</a>
 
