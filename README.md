@@ -4,10 +4,15 @@
 ## Contents
 
 [**1. Introduction**](#introduction)
+
 [**2. Challenges with the Data**](#data)
+
 [**3. Feature Engineering**](#feature_engineering)
+
 [**4. Modeling Rentability**](#modeling_rentability)
+
 [**5. Model Performance**](#model_performance)
+
 [**5. Summary**](#summary)
 
 Please have a look through the git repository. The jupyter notebooks describe the analysis in greater detail.
