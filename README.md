@@ -200,32 +200,35 @@ We prefer the recall value to be as high as possible for the high and moderate p
 ## Cross-Validated Precision vs Recall
 Using the cross-validated precision and recall values estimated in the previous stage we can see how the models compare to each other individually for each class label.
 
-### Low Performing Inventory
 
+### Low Performing Inventory
 
 <img align="right" width="502" height="396" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
 
-In the above plot, random forest and gradient boosting decision trees peform the best but we do not care to model the low performing inventory as best as we can. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
+In the plot to the right, random forest and gradient boosting decision trees peform the best but we do not care to model the low performing inventory as best as we can. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
+
 
 ### Moderate Performing Inventory
+
+<img src ="images/p vs r moderate performing inventory.png" width="502" height="396" />
+
 In the above plot, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
 
-<div style="text-align:center">
-<img src ="images/p vs r moderate performing inventory.png" width="502" height="396" />
-</div>
 
 ### High Performing Inventory
 
-<div style="text-align:center">
 <img src ="images/p vs r high performing inventory.png" width="502" height="396" />
-</div>
+
 
 In this last plot, we can see that logistic regression out performs random forest. For this reason we select logistic regression as our final model. It has the best recall without sacrificing precision too much.
 
 ## Precision vs Recall
+
 It will be beneficial to verify that the models are using the most optimal probability threshold to classify a sample as either a postive sample or negative sample.
 
-## Logistic Regression
+
+### Logistic Regression
+
 Our cross-validated precision and recall values appear as dots on the figures. We can see that the probabilty thresholds chosen by the algorithm are quite good and do not need to be modified. We must keep in mind that the curves themselves are not cross-validated so they will have statistical fluctations making the cross-validated points not lie completely on the curve.
 
 
@@ -237,7 +240,8 @@ Now that we have settled on Logistic Regression with Ridge regularization as our
 ​
 The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase in the odds of being a high performing item over a low performing item, given by the expression,
 
-Δodds=eβrental priceclass 1−βrental priceclass 0Δodds=eβclass 1rental price−βclass 0rental price,
+Δodds = eβrental priceclass 1−βrental priceclass 0
+Δodds = eβclass 1rental price−βclass 0rental price,
 
 where βrental priceclass 1βclass 1rental price is the coefficient of the rental price for class 1, and similarly for class 0.
 
