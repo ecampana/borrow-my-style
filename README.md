@@ -265,7 +265,7 @@ We are also starting to see which brand names are popular in the moderate and hi
 ### High Performing Inventory against Moderately Performing Inventory
 Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtlities in their differences.
 
-<img align="right" width="446" height="287" src="images/lr coefficients high relative to low.png" hspace="40" vspace="40">
+<img align="right" width="446" height="287" src="images/lr coefficients high relative to moderate.png" hspace="40" vspace="40">
 
 We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
 
