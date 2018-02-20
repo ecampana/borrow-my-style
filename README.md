@@ -171,8 +171,11 @@ In the plots above, the solid blue histograms represent the probability distribu
 ## Logistic Regression Classifier
 
 <div style="text-align:center">
+<img src ="images/logistic regression low.png" width="507" height="388" /><img src ="images/logistic regression moderate.png" width="507" height="388" />
+</div>
 
-<img src ="images/logistic regression low.png" width="507" height="388" /><img src ="images/logistic regression moderate.png" width="507" height="388" /><img src ="images/logistic regression high.png" width="507" height="388" />
+<div style="text-align:center">
+<img src ="images/logistic regression high.png" width="507" height="388" />
 </div>
 
 We observed that there that the model is not being overtrained on the training data as the background and signal distributions are well model, respectively. There also appears to be a discrimination between the signal and background distributions which is a good indication that the model will perform well but not necessarily. Further investigation will be needed to be sure of this.
