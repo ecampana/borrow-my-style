@@ -123,6 +123,7 @@ The rental price and item size will be standardized for all models even though s
 
 
 ## Additional Training and Test Data
+
 Additional datsets are created from X and y but are only meant to be used for precision vs recall plots, learning curve plots, and overfitting plots. They will not be used for hyper-parameter optimization.
 
 
@@ -138,7 +139,7 @@ Stratified k-fold cross validation is used over regular k-fold cross-validation 
 
 
 
-## Dummy Classification
+### Dummy Classification
 Dummy classification will serve as our baseline model. The classifier will make random predictions on the test dataset based on what it found the class composition to be in the training sample. If the training data had 60% low performing inventory, 30% moderate performing inventory, and 10% high performing inventory then it will make predictions based on these porportions on the test dataset irrepective of what the actual features are of the samples.
 
 The dummy classifier does not generalize well to the test dataset. Its precsion (i.e. about 8%) and recall (i.e. 8%) values are very low and it has a large log loss value.
@@ -146,18 +147,18 @@ The dummy classifier does not generalize well to the test dataset. Its precsion 
 Therefore, we would like to know if other machine learning algorithms can peform better than the baseline model.
 
 
-## Logistic Regression
+### Logistic Regression
 Our first attempt is with a linear model like Logistic Regression. We investigate different regularization parameters and use the one that performs the best.
 
 
 These values may be compared to the previous cross-validated precision and recall values and serves to check that everything is staying consistent.
 
 
-## Gradient Boosting Classifier
+### Gradient Boosting Classifier
 For our second attempt, we choose a non-linear model that could in essence capture any interaction terms between features the data may have.
 
 
-## Random Forest Classifier
+### Random Forest Classifier
 Another non-linear model we can use is random forrest which differs from gradient boosted decesion trees in that the former produces trees that are statistically independent.
 
 
@@ -166,7 +167,7 @@ Once the models have been trained and hyper-parameters optimized, we can explore
 
 In the plots above, the solid blue histograms represent the probability distribution for the background training data while the solid red histograms are for the signal training data. The blue and red dots are for the test data. In the first plot, the signal is the low performing inventory while the moderate and high performing inventory are considered background. In the second plot, the signal is the moderate performing inventory and in the last the signal is the high performing inventory.
 
-## Logistic Regression Classifier
+### Logistic Regression Classifier
 
 <div style="text-align:center">
 <img src ="images/logistic regression low.png" width="507" height="388" /><img src ="images/logistic regression moderate.png" width="507" height="388" />
@@ -180,6 +181,13 @@ We observed that there that the model is not being overtrained on the training d
 
 
 Having used several machine learning algorithms to model the data in order to predict inventory performace we must systematically evaluate each one to select the best one. We accomplish this in the next step.
+
+
+## Learning Curve
+
+<div style="text-align:center">
+<img src ="images/learning curve logistic regression.png" width="510" height="387" />
+</div>
 
 The plot shows that given the amount of data that is currently available our models are under trained. In the future as the company continues to rent or sell more inventory the model should show improvement in its predictions.
 
