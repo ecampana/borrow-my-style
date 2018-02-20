@@ -200,21 +200,21 @@ We prefer the recall value to be as high as possible for the high and moderate p
 ## Cross-Validated Precision vs Recall
 Using the cross-validated precision and recall values estimated in the previous stage we can see how the models compare to each other individually for each class label.
 
-## Low Performing Inventory
+### Low Performing Inventory
 
 
 <img align="right" width="502" height="396" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
 
 In the above plot, random forest and gradient boosting decision trees peform the best but we do not care to model the low performing inventory as best as we can. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
 
-## Moderate Performing Inventory
+### Moderate Performing Inventory
 In the above plot, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
 
 <div style="text-align:center">
 <img src ="images/p vs r moderate performing inventory.png" width="502" height="396" />
 </div>
 
-## High Performing Inventory
+### High Performing Inventory
 
 <div style="text-align:center">
 <img src ="images/p vs r high performing inventory.png" width="502" height="396" />
