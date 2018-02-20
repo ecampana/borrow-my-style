@@ -122,14 +122,6 @@ The rental price and item size will be standardized for all models even though s
 <div style="text-align:center"><img src ="images/rentability.jpg" width="317" height="210" /></div>
 
 
-## Additional Training and Test Data
-
-Additional datsets are created from X and y but are only meant to be used for precision vs recall plots, learning curve plots, and overfitting plots. They will not be used for hyper-parameter optimization.
-
-
-These datasets will be stored to be used again in the model evaluation step.
-
-
 ## Modeling of Inventory Performance
 We explore several machine learning models that are inherently multi-class classifiers. Models that are interpretible are preferred and use the others as a sanity check.
 
