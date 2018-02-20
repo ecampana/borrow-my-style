@@ -210,17 +210,17 @@ In the plot to the right, random forest and gradient boosting decision trees pef
 
 ### Moderate Performing Inventory
 
-<img src ="images/p vs r moderate performing inventory.png" width="502" height="396" />
+<img align="right" width="502" height="396" src="images/p vs r moderate performing inventory.png" hspace="40" vspace="40">
 
 In the above plot, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
 
 
 ### High Performing Inventory
 
-<img src ="images/p vs r high performing inventory.png" width="502" height="396" />
-
+<img align="right" width="502" height="396" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
 
 In this last plot, we can see that logistic regression out performs random forest. For this reason we select logistic regression as our final model. It has the best recall without sacrificing precision too much.
+
 
 ## Precision vs Recall
 
