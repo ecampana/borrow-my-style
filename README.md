@@ -15,7 +15,7 @@
 
 [**5. Summary**](#summary)
 
-Page under construction. Please have a look through the git repository. The jupyter notebooks are finalized and describe the analysis in greater detail.
+**Page under construction. Please have a look through the git repository. The jupyter notebooks are finalized and describe the analysis in greater detail.**
 
 
 
