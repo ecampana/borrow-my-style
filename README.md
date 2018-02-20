@@ -245,18 +245,27 @@ The coefficients of logistic regression are intrepretable. For example, for one 
 
 where βrental priceclass 1βclass 1rental price is the coefficient of the rental price for class 1, and similarly for class 0.
 
-## Moderate Performing Inventory against Low Performing Inventory
+
+### Moderate Performing Inventory against Low Performing Inventory
+
 The increase in odds of being a moderate performing item for a unit of increase in rental price appears counterintuitive at first. We would expect that as the rental price increases that the item will be less likely to rent. But this is not the case. The reason being is that there is a suggested rental price between 15-20% of the retail price for newer items and 10-15% for older items and so lenders tend to set the price higher for more well known brands. This leads to an artificial dependency of the rental price on the brand name. Had this not been the case then the change in odds would have most likely reflected our intuition.
 
+<img align="right" width="446" height="287" src="images/lr coefficients moderate relative to low.png" hspace="40" vspace="40">
 
-High Performing Inventory against Low Performing Inventory
+
+### High Performing Inventory against Low Performing Inventory
+
 The model is again trying to suggest that the lender increase the rental price so that it has a higher chance of being a high peforming inventory item than a low performing inventory item, wich goes against intuition. Basically, rental price is not being as powerful of a predictor for rentability as we would have hoped.
+
+<img align="right" width="446" height="287" src="images/lr coefficients high relative to low.png" hspace="40" vspace="40">
 
 We are also starting to see which brand names are popular in the moderate and high performing inventory category.
 
 
-High Performing Inventory against Moderately Performing Inventory
+### High Performing Inventory against Moderately Performing Inventory
 Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtlities in their differences.
+
+<img align="right" width="446 " height="287" src="images/lr coefficients high relative to moderate.png" hspace="40" vspace="40">
 
 We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
 
