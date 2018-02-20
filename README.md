@@ -119,7 +119,7 @@ We first load the data produced during the previous stages that will serve as ou
 The rental price and item size will be standardized for all models even though some may not need this additional transformation. The benefit of this is that, for example, regression coefficients in Logistic Regression may be compared to each other to gain additional insight into the data that may prove to be useful.
 
 
-<div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="597" /></div>
+<div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" /></div>
 
 
 ## Modeling of Inventory Performance
