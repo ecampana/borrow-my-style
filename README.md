@@ -36,8 +36,6 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 [Data cleanining pipeline (notebook)](https://github.com/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-[//]: # This notebook outlines the data cleaning and transformations that were performed on the client company's data for the purposes of analyzing it.
-
 The company is a young start up with a small technical team. They are immensely interested in find ways to explore the data and extract fashion trends that could help lenders. The inventory information is stored on a Heroku PostgreSQL database. 
 
 From the orders table we can determine the rental count of each item. This information can be used, for example, to learn how often an item is rented during its listing lifetime.
@@ -204,10 +202,8 @@ Using the cross-validated precision and recall values estimated in the previous 
 
 ## Low Performing Inventory
 
-<div style="text-align:center">
-<img src ="images/p vs r low performing inventory.png" width="502" height="396" />
-</div>
 
+<img align="right" width="502" height="396" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
 
 In the above plot, random forest and gradient boosting decision trees peform the best but we do not care to model the low performing inventory as best as we can. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
 
