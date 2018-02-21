@@ -112,7 +112,7 @@ The last transformation we preform is One-Hot-Encoding of categorical features i
 
 We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on item type, brand, size, and rental price. The reason we are restricted to only these features is that lenders will only be providing this information.
 
-<div style="text-align:center"><img src ="images/rentability classification.jpg" width="600" height="271" /></div>
+<div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
 
 
 We first load the data produced during the previous stages that will serve as our training and test data.
