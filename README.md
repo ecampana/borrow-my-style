@@ -7,13 +7,13 @@
 
 [**2. Challenges with the Data**](#data)
 
-[**3. Feature Engineering**](#feature_engineering)
+[**3. Fun with Feature Engineering**](#feature_engineering)
 
 [**4. Modeling Rentability**](#modeling_rentability)
 
 [**5. Model Performance**](#model_performance)
 
-[**5. Summary**](#summary)
+[**6. Summary**](#summary)
 
 **Page under construction. Please have a look through the git repository. The jupyter notebooks are finalized and describe the analysis in greater detail.**
 
@@ -36,18 +36,14 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 [Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-The company is a young start up with a small technical team. They are immensely interested in find ways to explore the data and extract fashion trends that could help lenders. The inventory information is stored on a Heroku PostgreSQL database. 
-
-From the orders table we can determine the rental count of each item. This information can be used, for example, to learn how often an item is rented during its listing lifetime.
-
-An interesting quantity to have is the rental revenue of each item which may be used at a later point to evaluate the improvements in company profits when compared to the previous model.
+The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. 
 
 
-The data contains several samples that need to be removed either because there is not enough information for it to be useful or they need to be corrected in one way or another.
-
-In order to determine the lifetime of items we need to know when they were delisted. But most items continue to be rented so in those cases we chose the current date as the date that they were delisted.
+The inventory information is stored on a Heroku PostgreSQL database and contained about six thousand sample collect during a period of three years.
+The data contained a small fractions of samples that need to be removed either because there was not enough information for it to be useful or they need to be corrected in one way or another.
 
 Brand names are curated to remove any variablity in their spellings. This reduced the list of brand names by 30%.
+
 
 
 
@@ -59,26 +55,41 @@ Brand names are curated to remove any variablity in their spellings. This reduce
 
 [Feature engineering (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/feature-engineering.ipynb)
 
+
+
+From the orders table we can determine the rental count of each item. This information can be used, for example, to learn how often an item is rented during its listing lifetime.
+
+
+In order to determine the lifetime of items we need to know when they were delisted. But most items continue to be rented so in those cases we chose the current date as the date that they were delisted.
+
+
+
+
 In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
 
 First off, we load the data produced during the data cleaning pipeline.
 
 ## Apparel Sizes
+
 Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels into numerical values. Had the converse been true we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the various brands and leave this as an underlying assumption of our modeling.
 
 ## Missing Inventory Sizes
+
 A minority of samples have their item sizes missing. For these, cases we will replace the missing value by the most frequent size in their respective item type, for example, the most common dress size is 4.
 
 ## Inventory Lifetimes
+
 To track inventory trends, we will need to know the lifetime of the individual items. This is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
 
 ## Rentability
+
 A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental frequency = rental count/lifetime).
 
 It is insufficient to just be able to predict whether an item will be rented or not since a lender will not be aware that the reason their item is predicted to be rented is because the model is implicitly assuming it will be available for at least a certain amount of time. This situation is not ideal so taking the lifetime of the inventory into account in some way will go a long way in resolving this dilemma.
 
 
 ## Classifying Rentability
+
 We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. Moving forward we will only consider apparels (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accesories can be modeled independently.
 
 We plot the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
@@ -97,6 +108,7 @@ This is what we would expect the majority of the inventory is low performing (i.
 
 
 ## One-Hot Encoding Categorical Features
+
 The last transformation we preform is One-Hot-Encoding of categorical features into numerical values in order for machine learning algorithms to be able to utilize them. The categorical features in our analysis are "item type", "brand", "size", and "rental price".
 
 
@@ -115,6 +127,7 @@ We first load the data produced during the previous stages that will serve as ou
 
 
 ## Standardize Features
+
 The rental price and item size will be standardized for all models even though some may not need this additional transformation. The benefit of this is that, for example, regression coefficients in Logistic Regression may be compared to each other to gain additional insight into the data that may prove to be useful.
 
 
@@ -122,6 +135,7 @@ The rental price and item size will be standardized for all models even though s
 
 
 ## Modeling of Inventory Performance
+
 We explore several machine learning models that are inherently multi-class classifiers. Models that are interpretible are preferred and use the others as a sanity check.
 
 The high and moderate performing inventory samples are highly imblanced with respect to the low preforming inventory so care must be taken. This is accomplished by oversampling the minority class to match that of the majority class. In essence, we will be using bootstrap sampling. The hyper-paramerters will be optimized and cross-validated using the Logarithmic Loss function (i.e. log loss). Log loss heavily penalizes any strongly mis-classified prediction and for this reason it was chosen. Precision and Recall are used for the model selection and evaluation. Those values are also cross-validated for robustness.
@@ -131,6 +145,7 @@ Stratified k-fold cross validation is used over regular k-fold cross-validation 
 
 
 ### Dummy Classification
+
 Dummy classification will serve as our baseline model. The classifier will make random predictions on the test dataset based on what it found the class composition to be in the training sample. If the training data had 60% low performing inventory, 30% moderate performing inventory, and 10% high performing inventory then it will make predictions based on these porportions on the test dataset irrepective of what the actual features are of the samples.
 
 The dummy classifier does not generalize well to the test dataset. Its precsion (i.e. about 8%) and recall (i.e. 8%) values are very low and it has a large log loss value.
@@ -139,6 +154,7 @@ Therefore, we would like to know if other machine learning algorithms can peform
 
 
 ### Logistic Regression
+
 Our first attempt is with a linear model like Logistic Regression. We investigate different regularization parameters and use the one that performs the best.
 
 
@@ -146,14 +162,17 @@ These values may be compared to the previous cross-validated precision and recal
 
 
 ### Gradient Boosting Classifier
+
 For our second attempt, we choose a non-linear model that could in essence capture any interaction terms between features the data may have.
 
 
 ### Random Forest Classifier
+
 Another non-linear model we can use is random forrest which differs from gradient boosted decesion trees in that the former produces trees that are statistically independent.
 
 
 ## Overfitting plots
+
 Once the models have been trained and hyper-parameters optimized, we can explore how well they model the data. For example, is the probability distribution for high performing inventory items modeled well between test and training data in the case of the signal and background samples seperately.
 
 In the plots above, the solid blue histograms represent the probability distribution for the background training data while the solid red histograms are for the signal training data. The blue and red dots are for the test data. In the first plot, the signal is the low performing inventory while the moderate and high performing inventory are considered background. In the second plot, the signal is the moderate performing inventory and in the last the signal is the high performing inventory.
@@ -235,6 +254,7 @@ In conclusion, having studied the various precision vs recall plots we may be co
 
 
 ## Feature Importance
+
 Now that we have settled on Logistic Regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between item sizes offered by lenders and those sizes demendad by renters? We will focus on answering these questions in this section.
 ​
 The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase in the odds of being a high performing item over a low performing item, given by the expression,
@@ -262,6 +282,7 @@ We are also starting to see which brand names are popular in the moderate and hi
 
 
 ### High Performing Inventory against Moderately Performing Inventory
+
 Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtlities in their differences.
 
 <img align="right" width="446" height="287" src="images/lr coefficients high relative to moderate.png" hspace="40" vspace="40">
