@@ -40,7 +40,7 @@ The company is a young start up with a small technical team. They are immensely 
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="630" height="320" /></div>
 
-Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but my main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
+Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but our main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
@@ -48,26 +48,13 @@ Brand names were curated to remove any variablity in their spellings. This reduc
 [Feature engineering (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/feature-engineering.ipynb)
 
 
-
-From the orders table we can determine the rental count of each item. This information can be used, for example, to learn how often an item is rented during its listing lifetime.
-
-
-In order to determine the lifetime of items we need to know when they were delisted. But most items continue to be rented so in those cases we chose the current date as the date that they were delisted.
-
-
-
-
-In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
-
-First off, we load the data produced during the data cleaning pipeline.
-
 ## Apparel Sizes
 
-Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels into numerical values. Had the converse been true we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the various brands and leave this as an underlying assumption of our modeling.
+Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels that exist into a numerical value. Had the converse been true, we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the diverse brands and leave this as an underlying assumption of our modeling.
 
 ## Missing Inventory Sizes
 
-A minority of samples have their item sizes missing. For these, cases we will replace the missing value by the most frequent size in their respective item type, for example, the most common dress size is 4.
+A minority of samples have their item sizes missing. For these, cases we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This chose made the most sense when taking a look at the distribution of dress sizes.
 
 ## Inventory Lifetimes
 
@@ -78,6 +65,16 @@ To track inventory trends, we will need to know the lifetime of the individual i
 A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental frequency = rental count/lifetime).
 
 It is insufficient to just be able to predict whether an item will be rented or not since a lender will not be aware that the reason their item is predicted to be rented is because the model is implicitly assuming it will be available for at least a certain amount of time. This situation is not ideal so taking the lifetime of the inventory into account in some way will go a long way in resolving this dilemma.
+
+
+
+## Rental Count and Rentability
+In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
+
+From the orders table we can determine the rental count of each item. This information can be used, for example, to learn how often an item is rented during its listing lifetime.
+
+
+In order to determine the lifetime of items we need to know when they were delisted. But most items continue to be rented so in those cases we chose the current date as the date that they were delisted.
 
 
 ## Classifying Rentability
@@ -172,12 +169,19 @@ In the plots above, the solid blue histograms represent the probability distribu
 ### Logistic Regression Classifier
 
 <div style="text-align:center">
-<img src ="images/logistic regression low.png" width="507" height="388" /><img src ="images/logistic regression moderate.png" width="507" height="388" />
+<img src ="images/logistic regression low.png" width="507" height="388" />
+</div>
+
+<div style="text-align:center">
+<img src ="images/logistic regression moderate.png" width="507" height="388" />
 </div>
 
 <div style="text-align:center">
 <img src ="images/logistic regression high.png" width="507" height="388" />
 </div>
+
+<img src ="images/logistic regression low.png" width="507" height="388" /><img src ="images/logistic regression moderate.png" width="507" height="388" /><img src ="images/logistic regression high.png" width="507" height="388" />
+
 
 We observed that there that the model is not being overtrained on the training data as the background and signal distributions are well model, respectively. There also appears to be a discrimination between the signal and background distributions which is a good indication that the model will perform well but not necessarily. Further investigation will be needed to be sure of this.
 
