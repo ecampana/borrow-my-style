@@ -38,9 +38,9 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 
 The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database and contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that need to be removed simply because they did not have enough information to be of any use. With that in mind, the rest of the data had a wealth of information. 
 
-<div style="text-align:center"><img src ="images/data preperation.jpg" width="741" height="376" /></div>
+<div style="text-align:center"><img src ="images/data preperation.jpg" width="630" height="320" /></div>
 
-Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but the main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name. In this instance with "guess".
+Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but my main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
