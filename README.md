@@ -27,7 +27,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
 </div>
 
-*For the purposes of anonymity, _Borrow My Style_ is a pseudonym for consulting client.
+*For the purposes of anonymity, _Borrow My Style_ is a pseudonym for the consulting client.
 
 
 
@@ -36,19 +36,11 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 [Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. 
-
-
-The inventory information is stored on a Heroku PostgreSQL database and contained about six thousand sample collect during a period of three years.
-The data contained a small fractions of samples that need to be removed either because there was not enough information for it to be useful or they need to be corrected in one way or another.
-
-Brand names are curated to remove any variablity in their spellings. This reduced the list of brand names by 30%.
-
-
-
+The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database and contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that need to be removed simply because they did not have enough information to be of any use. With that in mind, the rest of the data had a wealth of information. 
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="741" height="376" /></div>
 
+Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but the main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name. In this instance with "guess".
 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
