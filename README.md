@@ -33,7 +33,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 
 # <a name="data">Challenges with the Data</a>
 
-[Data cleanining pipeline (notebook)](https://github.com/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
+[Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
 The company is a young start up with a small technical team. They are immensely interested in find ways to explore the data and extract fashion trends that could help lenders. The inventory information is stored on a Heroku PostgreSQL database. 
@@ -49,16 +49,15 @@ In order to determine the lifetime of items we need to know when they were delis
 
 Brand names are curated to remove any variablity in their spellings. This reduced the list of brand names by 30%.
 
-The final stage of the data cleaning pipeline is storing the results into cvs files for later use.
 
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="741" height="376" /></div>
 
 
 
-# <a name="feature_engineering">Feature Engineering</a>
+# <a name="feature_engineering">Fun with Feature Engineering</a>
 
-[Feature engineering (notebook)](https://github.com/ecampana/borrow-my-style/blob/master/feature-engineering.ipynb)
+[Feature engineering (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/feature-engineering.ipynb)
 
 In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
 
@@ -104,7 +103,7 @@ The last transformation we preform is One-Hot-Encoding of categorical features i
 
 # <a name="modeling_rentability">Modeling Rentability</a>
 
-[Modeling rentability (notebook)](https://github.com/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)
+[Modeling rentability (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)
 
 
 We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on item type, brand, size, and rental price. The reason we are restricted to only these features is that lenders will only be providing this information.
@@ -187,7 +186,7 @@ The plot shows that given the amount of data that is currently available our mod
 
 # <a name="model_performance">Model Performance</a>
 
-[Model performance (notebook)](https://github.com/ecampana/borrow-my-style/blob/master/model-performance.ipynb)
+[Model performance (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/model-performance.ipynb)
 
 
 In this notebook, we center our attention to evaluating our various models in a more systematic fashion. An important idea to keep in mind is choosing a model that furthers the companies objective. We would like to help lenders understand which fashion items they should make available to others.
