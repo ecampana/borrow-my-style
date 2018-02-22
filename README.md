@@ -56,12 +56,12 @@ In this note, we focus on engineering new features that will advance us towards 
 
 Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels that exist into a numerical value. Had the converse been true, we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the diverse brands and leave this as an underlying assumption of our modeling.
 
-A minority of samples have their item sizes missing. For these cases, we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This chose made the most sense when taking a look at the distribution of dress sizes.
+A minority of samples have their apparel sizes missing. For these cases, we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This chose made the most sense when taking a look at the distribution of dress sizes.
 
 
 ## Standardize Features
 
-The rental price and item size will be standardized for all models even though some may not need this additional transformation. The benefit of this is that, for example, regression coefficients in Logistic Regression may be compared to each other to gain additional insight into the data that may prove to be useful.
+The rental price and apparel size will be standardized for all models even though some may not strictly need this transformation. The benefit of this, for example, is that the regression coefficients for logistic models may be compared to each other to gain additional insight into the data that may prove to be useful.
 
 
 ## Classifying Rentability
@@ -201,7 +201,7 @@ In this last plot, we can see that logistic regression out performs random fores
 
 ## Feature Importance
 
-Now that we have settled on Logistic Regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between item sizes offered by lenders and those sizes demendad by renters? We will focus on answering these questions in this section.
+Now that we have settled on Logistic Regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between apparel sizes offered by lenders and those sizes demendad by renters? We will focus on answering these questions in this section.
 ​
 The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase in the odds of being a high performing item over a low performing item, given by the expression,
 
@@ -235,7 +235,7 @@ Another interesting option to consider is what the model has to say about high p
 
 We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
 
-One last observations to make is that there isn't a significant mismatch between item sizes offered by lenders and those sizes renters are interested in. In all is cases the magnitude of the regression coefficient for item size was rather small indicating that it does not offer serious predicitve power but on the bright size this means that there is a good renter experience.
+One last observations to make is that there isn't a significant mismatch between apparal sizes offered by lenders and those sizes renters are interested in. In all is cases the magnitude of the regression coefficient for apparel size was rather small indicating that it does not offer serious predicitve power but on the bright size this means that there is a good renter experience.
 
 
 
