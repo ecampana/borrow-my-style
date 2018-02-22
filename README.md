@@ -36,83 +36,49 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 [Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database and contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that need to be removed simply because they did not have enough information to be of any use. With that in mind, the rest of the data had a wealth of information. 
+The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database and contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not have enough information to be of any use. With that in mind, the rest of the data had a wealth of information. 
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="630" height="320" /></div>
 
 Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but our main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
+
+Moving forward we will only consider apparels (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accesories can be modeled independently.
 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
 
 [Feature engineering (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/feature-engineering.ipynb)
 
+In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
 
 ## Apparel Sizes
 
 Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels that exist into a numerical value. Had the converse been true, we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the diverse brands and leave this as an underlying assumption of our modeling.
 
-## Missing Inventory Sizes
-
-A minority of samples have their item sizes missing. For these, cases we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This chose made the most sense when taking a look at the distribution of dress sizes.
-
-## Inventory Lifetimes
-
-To track inventory trends, we will need to know the lifetime of the individual items. This is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
-
-## Rentability
-
-A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental frequency = rental count/lifetime).
-
-It is insufficient to just be able to predict whether an item will be rented or not since a lender will not be aware that the reason their item is predicted to be rented is because the model is implicitly assuming it will be available for at least a certain amount of time. This situation is not ideal so taking the lifetime of the inventory into account in some way will go a long way in resolving this dilemma.
-
-
-
-## Rental Count and Rentability
-In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
-
-From the orders table we can determine the rental count of each item. This information can be used, for example, to learn how often an item is rented during its listing lifetime.
-
-
-In order to determine the lifetime of items we need to know when they were delisted. But most items continue to be rented so in those cases we chose the current date as the date that they were delisted.
+A minority of samples have their item sizes missing. For these cases, we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This chose made the most sense when taking a look at the distribution of dress sizes.
 
 
 ## Classifying Rentability
 
-We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. Moving forward we will only consider apparels (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accesories can be modeled independently.
-
-We plot the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
+It is insufficient to just be able to predict whether an item will be rented or not since a lender will not be aware under what circumstances the item is predicted to be rented. The model is implicitly assuming it will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
 
 
-The vast majority of the rental items are under utilized and for this reason we classify them all as "Low" performing inventory. Removing these items we can explore the rest of the items to see if there are any additional structures in the rentability distribution.
+    A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). This is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
+
+We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. 
+
+The vast majority of the rental items are under utilized and for this reason we classify them all as "Low" performing inventory. We plotted the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
 
 
-As we see, there are 944 items that have been rented at some point. A good choice would be to classify the top 50% of the inventory with high rentability as "High" performing and the lower 50% of the inventory as "Moderate" performing. The next step is to determine what rentability threshold value will accomplish this classification. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. The data is already imbalanced and choosing an 80/20 split would further imbalance it for the high rentability inventory.
+A good choice would be to classify the top 50% of the inventory with high rentability as "High" performing and the lower 50% of the inventory as "Moderate" performing. The next step is to determine what rentability threshold value will accomplish this classification. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. The data is already imbalanced and choosing an 80/20 split would further imbalance it for the high rentability inventory.
 
 
-The threshold value should be between 0.03404 and 0.03431 so we wil use is 0.034175. Samples that have a rentability of zero will be labeled by 0 (Low performing), while those with a rentability within (0, 0.034175) will be labeled by 1 (Moderately performing), and those with a rentability greater than 0.034175 will be labeled by 2 (High performing). We have now framed the problem as a Multi-class classification.
+The threshold value should be between 0.03404 and 0.03431 so we wil use is 0.034175. Samples that have a rentability of zero will be labeled by 0 (Low performing), while those with a rentability within (0, 0.034175) will be labeled by 1 (Moderately performing), and those with a rentability greater than 0.034175 will be labeled by 2 (High performing). 
 
 
-This is what we would expect the majority of the inventory is low performing (i.e. 0) while the rest is equally distributed as either moderately performing (i.e. 1) or high performing (i.e. 2).
-
-
-## One-Hot Encoding Categorical Features
-
-The last transformation we preform is One-Hot-Encoding of categorical features into numerical values in order for machine learning algorithms to be able to utilize them. The categorical features in our analysis are "item type", "brand", "size", and "rental price".
-
-
-
-# <a name="modeling_rentability">Modeling Rentability</a>
-
-[Modeling rentability (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)
-
-
-We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on item type, brand, size, and rental price. The reason we are restricted to only these features is that lenders will only be providing this information.
+We have now framed the problem as a Multi-class classification.
 
 <div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
-
-
-We first load the data produced during the previous stages that will serve as our training and test data.
 
 
 ## Standardize Features
@@ -121,6 +87,17 @@ The rental price and item size will be standardized for all models even though s
 
 
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" /></div>
+
+
+
+
+# <a name="modeling_rentability">Modeling Rentability</a>
+
+[Modeling rentability (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)
+
+
+We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on brand name, item type, apparel size, and rental price. The reason we are restricted to only these features is that lenders will only be providing this info
+rmation.
 
 
 ## Modeling of Inventory Performance
@@ -192,13 +169,13 @@ Having used several machine learning algorithms to model the data in order to pr
 
 ## Learning Curve
 
-<div style="text-align:center">
-<img src ="images/learning curve logistic regression.png" width="510" height="387" />
-</div>
-
 The plot shows that given the amount of data that is currently available our models are under trained. In the future as the company continues to rent or sell more inventory the model should show improvement in its predictions.
 
 
+<div style="text-align:center">
+<img src ="images/learning curve logistic regression.png" width="510" height="387" />
+</div>
+                                                                                                                                                                                                                                                                                                                                                                                    
 
 # <a name="model_performance">Model Performance</a>
 
@@ -212,8 +189,17 @@ Two metrics worth considering are Precision and Recall. The higher the precision
 We prefer the recall value to be as high as possible for the high and moderate performing inventory because we would like to find as many of them as possible. Those are the fashion items that have the potential to bring in more revenue for both the lender and client company. Unfortunately, the higher the recall the lower the precision will be. For our case, we do not necessarily need precision to be all that high for the high and moderate performing inventory. The consequences of this will mean having more unwanted fashion items in the peer-2-peer rental community but the company will not actuallly incur any monetary loss only potential loss.
 
 
-## Cross-Validated Precision vs Recall
+## Precision vs Recall
+
 Using the cross-validated precision and recall values estimated in the previous stage we can see how the models compare to each other individually for each class label.
+
+It will be beneficial to verify that the models are using the most optimal probability threshold to classify a sample as either a postive sample or negative sample.
+
+Our cross-validated precision and recall values appear as dots on the figures. We can see that the probabilty thresholds chosen by the algorithm are quite good and do not need to be modified. We must keep in mind that the curves themselves are not cross-validated so they will have statistical fluctations making the cross-validated points not lie completely on the curve.
+
+
+In conclusion, having studied the various precision vs recall plots we may be confident that the algorithm chose, for the the most part, a reasonable probability thresholds. This helps validate our cross-validated precision vs recall plots to use for our final model selection. Comparing the models also serves as a sanity check.
+
 
 
 ### Low Performing Inventory
@@ -236,18 +222,6 @@ In the above plot, both random forest and logistic regression perform the best f
 
 In this last plot, we can see that logistic regression out performs random forest. For this reason we select logistic regression as our final model. It has the best recall without sacrificing precision too much.
 
-
-## Precision vs Recall
-
-It will be beneficial to verify that the models are using the most optimal probability threshold to classify a sample as either a postive sample or negative sample.
-
-
-### Logistic Regression
-
-Our cross-validated precision and recall values appear as dots on the figures. We can see that the probabilty thresholds chosen by the algorithm are quite good and do not need to be modified. We must keep in mind that the curves themselves are not cross-validated so they will have statistical fluctations making the cross-validated points not lie completely on the curve.
-
-
-In conclusion, having studied the various precision vs recall plots we may be confident that the algorithm chose, for the the most part, a reasonable probability thresholds. This helps validate our cross-validated precision vs recall plots to use for our final model selection. Comparing the models also serves as a sanity check.
 
 
 ## Feature Importance
@@ -275,7 +249,7 @@ The model is again trying to suggest that the lender increase the rental price s
 
 <img align="right" width="446" height="287" src="images/lr coefficients high relative to low.png" hspace="40" vspace="40">
 
-We are also starting to see which brand names are popular in the moderate and high performing inventory category.
+We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
 
 
 ### High Performing Inventory against Moderately Performing Inventory
