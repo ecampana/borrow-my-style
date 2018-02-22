@@ -51,6 +51,7 @@ Moving forward we will only consider apparels (i.e. "tops", "skirts", "pants", "
 
 In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
 
+
 ## Apparel Sizes
 
 Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels that exist into a numerical value. Had the converse been true, we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the diverse brands and leave this as an underlying assumption of our modeling.
@@ -58,37 +59,25 @@ Apparel sizes can be numerical, ranging from zero and upwards, but in some insta
 A minority of samples have their item sizes missing. For these cases, we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This chose made the most sense when taking a look at the distribution of dress sizes.
 
 
-## Classifying Rentability
-
-It is insufficient to just be able to predict whether an item will be rented or not since a lender will not be aware under what circumstances the item is predicted to be rented. The model is implicitly assuming it will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
-
-
-    A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). This is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
-
-We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. 
-
-The vast majority of the rental items are under utilized and for this reason we classify them all as "Low" performing inventory. We plotted the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
-
-
-A good choice would be to classify the top 50% of the inventory with high rentability as "High" performing and the lower 50% of the inventory as "Moderate" performing. The next step is to determine what rentability threshold value will accomplish this classification. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. The data is already imbalanced and choosing an 80/20 split would further imbalance it for the high rentability inventory.
-
-
-The threshold value should be between 0.03404 and 0.03431 so we wil use is 0.034175. Samples that have a rentability of zero will be labeled by 0 (Low performing), while those with a rentability within (0, 0.034175) will be labeled by 1 (Moderately performing), and those with a rentability greater than 0.034175 will be labeled by 2 (High performing). 
-
-
-We have now framed the problem as a Multi-class classification.
-
-<div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
-
-
 ## Standardize Features
 
 The rental price and item size will be standardized for all models even though some may not need this additional transformation. The benefit of this is that, for example, regression coefficients in Logistic Regression may be compared to each other to gain additional insight into the data that may prove to be useful.
 
 
+## Classifying Rentability
+
+It is insufficient to just be able to predict whether an item will be rented or not since a lender will not be aware under what circumstances the item is predicted to be rented. The model is implicitly assuming it will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
+
+
+A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). This is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
+
+We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. We plott the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
+
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" /></div>
 
+The vast majority of the rental items are under utilized and for this reason we classify them all as "Low" performing inventory. A good choice would be to classify the top 50% of the inventory with high rentability as "High" performing and the lower 50% of the inventory as "Moderate" performing. The next step is to determine what rentability threshold value will accomplish this classification. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification.
 
+<div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
 
 
 # <a name="modeling_rentability">Modeling Rentability</a>
@@ -105,9 +94,6 @@ rmation.
 We explore several machine learning models that are inherently multi-class classifiers. Models that are interpretible are preferred and use the others as a sanity check.
 
 The high and moderate performing inventory samples are highly imblanced with respect to the low preforming inventory so care must be taken. This is accomplished by oversampling the minority class to match that of the majority class. In essence, we will be using bootstrap sampling. The hyper-paramerters will be optimized and cross-validated using the Logarithmic Loss function (i.e. log loss). Log loss heavily penalizes any strongly mis-classified prediction and for this reason it was chosen. Precision and Recall are used for the model selection and evaluation. Those values are also cross-validated for robustness.
-
-Stratified k-fold cross validation is used over regular k-fold cross-validation due to the class imbalances. And to reduce computation time we only employ 3-fold cross-validation.
-
 
 
 ### Dummy Classification
@@ -149,17 +135,10 @@ In the plots above, the solid blue histograms represent the probability distribu
 <img src ="images/logistic regression low.png" width="507" height="388" />
 </div>
 
-<div style="text-align:center">
-<img src ="images/logistic regression moderate.png" width="507" height="388" />
-</div>
 
-<div style="text-align:center">
-<img src ="images/logistic regression high.png" width="507" height="388" />
-</div>
+<img src ="images/logistic regression low.png" width="400" height="306" /><img src ="images/logistic regression moderate.png" width="400" height="306" />
 
-<img src ="images/logistic regression low.png" width="480" height="367" /><img src ="images/logistic regression moderate.png" width="367" height="388" />
-
-
+<img src ="images/logistic regression high.png" width="400" height="306" />
 
 We observed that there that the model is not being overtrained on the training data as the background and signal distributions are well model, respectively. There also appears to be a discrimination between the signal and background distributions which is a good indication that the model will perform well but not necessarily. Further investigation will be needed to be sure of this.
 
