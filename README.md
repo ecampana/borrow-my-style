@@ -131,17 +131,13 @@ In the plots above, the solid blue histograms represent the probability distribu
 
 ### Logistic Regression Classifier
 
-<div style="text-align:center">
-<img src ="images/logistic regression low.png" width="507" height="388" />
-</div>
+
+We observed that there that the model is not being overtrained on the training data as the background and signal distributions are well model, respectively. There also appears to be a discrimination between the signal and background distributions which is a good indication that the model will perform well but not necessarily. Further investigation will be needed to be sure of this.
 
 
 <img src ="images/logistic regression low.png" width="400" height="306" /><img src ="images/logistic regression moderate.png" width="400" height="306" />
 
-<img src ="images/logistic regression high.png" width="400" height="306" />
-
-We observed that there that the model is not being overtrained on the training data as the background and signal distributions are well model, respectively. There also appears to be a discrimination between the signal and background distributions which is a good indication that the model will perform well but not necessarily. Further investigation will be needed to be sure of this.
-
+<div style="text-align:center"><img src ="images/logistic regression high.png" width="400" height="306" /></div>
 
 Having used several machine learning algorithms to model the data in order to predict inventory performace we must systematically evaluate each one to select the best one. We accomplish this in the next step.
 
