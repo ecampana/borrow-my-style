@@ -21,7 +21,7 @@
 
 # <a name="introduction">Introduction</a>
 
-Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, shoes, as well as accessories. The purpose of this blog post is to detail the models that were built to evaluate inventory performance and provide a recommendation system for lenders.
+Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, as well as shoes and accessories. The purpose of this blog post is to detail the models that were built to evaluate inventory performance and provide a recommendation system for lenders.
 
 <div style="text-align:center">
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
@@ -36,42 +36,42 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 [Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database and contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not have enough information to be of any use. With that in mind, the rest of the data had a wealth of information. 
+The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database that contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not provide enough information to be of any use. With that in mind, the rest of the data had a wealth of information. 
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="630" height="320" /></div>
 
 Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but our main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
 
-Moving forward we will only consider apparels (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accesories can be modeled independently.
+Moving forward we will only consider apparel (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accesories can be modeled independently.
 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
 
 [Feature engineering (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/feature-engineering.ipynb)
 
-In this note, we focus on engineering new features that will advance us towards a predictive model for inventory trends.
+We focus on engineering new features that will advance us towards a predictive model for inventory trends.
 
 
 ## Apparel Sizes
 
 Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels that exist into a numerical value. Had the converse been true, we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the diverse brands and leave this as an underlying assumption of our modeling.
 
-A minority of samples have their apparel sizes missing. For these cases, we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This chose made the most sense when taking a look at the distribution of dress sizes.
+A minority of samples have their apparel sizes missing. For these cases, we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This choice made the most sense when taking a look at the distribution of dress sizes.
 
 
-## Standardize Features
+## Standardizing Features
 
-The rental price and apparel size will be standardized for all models even though some may not strictly need this transformation. The benefit of this, for example, is that the regression coefficients for logistic models may be compared to each other to gain additional insight into the data that may prove to be useful.
+The apparel size and rental price are standardized for all models even though some may not strictly need this transformation. One benefit of this, for example, is that the regression coefficients for logistic models may be compared to each other to gain additional insight into the data that may prove to be useful.
 
 
 ## Classifying Rentability
 
-It is insufficient to just be able to predict whether an item will be rented or not since a lender will not be aware under what circumstances the item is predicted to be rented. The model is implicitly assuming it will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
+It is insufficient to just predict whether an item will be rented since a lender will not be aware under what circumstances the item is predicted to be rented. The model is implicitly assuming it will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
 
 
-A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). This is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
+A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). The lifetime is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
 
-We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. We plott the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
+We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. We plot the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
 
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" /></div>
 
@@ -85,7 +85,7 @@ The vast majority of the rental items are under utilized and for this reason we 
 [Modeling rentability (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)
 
 
-We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on brand name, item type, apparel size, and rental price. The reason we are restricted to only these features is that lenders will only be providing this info
+We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on brand name, item type, apparel size, and rental price. The reason we are restricting ourselves to these particular features is that lenders will be able to provide this information for us.
 rmation.
 
 
@@ -166,15 +166,7 @@ We prefer the recall value to be as high as possible for the high and moderate p
 
 ## Precision vs Recall
 
-Using the cross-validated precision and recall values estimated in the previous stage we can see how the models compare to each other individually for each class label.
-
-It will be beneficial to verify that the models are using the most optimal probability threshold to classify a sample as either a postive sample or negative sample.
-
 Our cross-validated precision and recall values appear as dots on the figures. We can see that the probabilty thresholds chosen by the algorithm are quite good and do not need to be modified. We must keep in mind that the curves themselves are not cross-validated so they will have statistical fluctations making the cross-validated points not lie completely on the curve.
-
-
-In conclusion, having studied the various precision vs recall plots we may be confident that the algorithm chose, for the the most part, a reasonable probability thresholds. This helps validate our cross-validated precision vs recall plots to use for our final model selection. Comparing the models also serves as a sanity check.
-
 
 
 ### Low Performing Inventory
