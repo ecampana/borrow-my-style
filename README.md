@@ -66,16 +66,21 @@ The apparel size and rental price are standardized for all models even though so
 
 ## Classifying Rentability
 
-It is insufficient to just predict whether an item will be rented since a lender will not be aware under what circumstances the item is predicted to be rented. The model is implicitly assuming it will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
+It is insufficient to merely predict whether an item will be rented since a lender will not be aware under what circumstances their item is predicted to be rented. The model is implicitly assuming the apparel will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
+
+A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). The lifetime is calculated by taking the difference between the date the item was last listed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime in number of weeks.
+
+We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. We plot the distribution of rentability in Log(count) vs Log(average rental per week) to zoom into features the data may have [la lune].
+
+<div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" />
+<figcaption>This is my caption text.</figcaption>
+</div>
 
 
-A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). The lifetime is calculated by taking the difference between the date the item was removed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime as number of weeks.
+The vast majority of the rental items are under utilized and for this reason we classify them all as "Low" performing inventory. A good choice would be to classify the top 50% of the inventory with high rentability as "High" performing and the lower 50% of the inventory as "Moderate" performing. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification.
 
-We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. We plot the distribution of rentability in Log(count) vs Log(Average Rental Per Week) to zoom into features the data may have.
 
-<div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" /></div>
-
-The vast majority of the rental items are under utilized and for this reason we classify them all as "Low" performing inventory. A good choice would be to classify the top 50% of the inventory with high rentability as "High" performing and the lower 50% of the inventory as "Moderate" performing. The next step is to determine what rentability threshold value will accomplish this classification. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification.
+The next step is to determine what rentability threshold value will accomplish this classification.
 
 <div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
 
@@ -232,9 +237,9 @@ One last observations to make is that there isn't a significant mismatch between
 
 
 
-# <a name="summary">Summary</a>
+# <a name="summary">The Future Looks Colorful</a>
 
-We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand what items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by having a high recall value without needing to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this since unintentially allowing lenders to share items that may not perform as well as they hope will not cause the client company to incur any monetary loss. The consequences are that there may be more lower performing items than what is ideal but overall the fashion catalog should decidely improve with those items that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming apparel.
+We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items.
 
 
 ### <a name="about_me">About the Author</a>
