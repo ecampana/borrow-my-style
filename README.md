@@ -13,7 +13,7 @@
 
 [**5. Model Performance**](#model_performance)
 
-[**6. Summary**](#summary)
+[**6. The Future Looks Colorful**](#summary)
 
 **Page under construction. Please have a look through the git repository. The jupyter notebooks are finalized and describe the analysis in greater detail.**
 
@@ -36,14 +36,14 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 [Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database that contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not provide enough information to be of any use. With that in mind, the rest of the data had a wealth of information. 
+The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database that contained about six thousand sample collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not provide enough information to be of any use. With that in mind, the rest of the data had a wealth of information. The data exploration revealed that much of the inventory is under utilized which really eliminated the possibility of using standard forecasting models to predict inventory trends.
+
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="630" height="320" /></div>
 
 Brand names were curated to remove any variablity in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but our main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
 
-Moving forward we will only consider apparel (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accesories can be modeled independently.
-
+Moving forward we will only consider apparel (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accesories can be modeled independently. 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
 
@@ -70,17 +70,14 @@ It is insufficient to merely predict whether an item will be rented since a lend
 
 A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). The lifetime is calculated by taking the difference between the date the item was last listed and the date it was first listed. The result are given in units of days and for this reason we divide by 7 so that we may report the lifetime in number of weeks.
 
-We study the rentability distribution of items to see if items fall into separate groups, which will serve as our target value for prediction. We plot the distribution of rentability in Log(count) vs Log(average rental per week) to zoom into features the data may have [la lune].
+We study the rentability distribution of items to see if they fall into separate groups, which will serve as our target value for prediction. 
 
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" />
-<figcaption>This is my caption text.</figcaption>
+<figcaption>The distribution of rentability is plotted in Log(count) vs Log(average rental per week) to zoom into features the data may have.</figcaption>
 </div>
 
 
-The vast majority of the rental items are under utilized and for this reason we classify them all as "Low" performing inventory. A good choice would be to classify the top 50% of the inventory with high rentability as "High" performing and the lower 50% of the inventory as "Moderate" performing. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification.
-
-
-The next step is to determine what rentability threshold value will accomplish this classification.
+ and for this reason we classify them as "Low" performing inventory if they have never rented. We next select a rentability value tha will enure that top 50% of the inventory with high rentability as "High" performing and the other 50% of the inventory as "Moderate" performing. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification.
 
 <div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
 
@@ -91,7 +88,6 @@ The next step is to determine what rentability threshold value will accomplish t
 
 
 We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on brand name, item type, apparel size, and rental price. The reason we are restricting ourselves to these particular features is that lenders will be able to provide this information for us.
-rmation.
 
 
 ## Modeling of Inventory Performance
@@ -239,7 +235,7 @@ One last observations to make is that there isn't a significant mismatch between
 
 # <a name="summary">The Future Looks Colorful</a>
 
-We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items.
+We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items. In the future, we could explre whether the color of fashion items has any impact on rentability.
 
 
 ### <a name="about_me">About the Author</a>
