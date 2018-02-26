@@ -175,7 +175,7 @@ The coefficients of logistic regression are intrepretable. For example, for one 
 
 where
 
-<img align="left" width="337" height="27" src="images/regression coefficient.png" hspace="40" vspace="40">
+<img align="left" width="97" height="27" src="images/regression coefficient.png" hspace="40" vspace="40">
 
 is the coefficient of the rental price for class 1, and similarly for class 0.
 
