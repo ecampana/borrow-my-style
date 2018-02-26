@@ -123,11 +123,11 @@ Another non-linear model we can use is random forrest which differs from gradien
 
 ## Learning Curve
 
-The plot shows that given the amount of data that is currently available our models are under trained. In the future as the company continues to rent or sell more inventory the model should show improvement in its predictions.
+The plot below shows that given the amount of data that is currently available our model is under trained. In the future as the company continues to rent or sell more inventory the model should show improvement in its predictions.
 
 
 <div style="text-align:center">
-<img src ="images/learning curve logistic regression.png" width="510" height="387" />
+<img src ="images/learning curve logistic regression.png" width="459" height="348" />
 </div>
                                                                                                                                                                                                                                                                                                                                                                                     
 
