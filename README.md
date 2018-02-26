@@ -93,16 +93,13 @@ We are now ready to model inventory trends for our client company. The main focu
 
 We explore several machine learning models that are inherently multi-class classifiers. Models that are interpretible are preferred and use the others as a sanity check.
 
-The high and moderate performing inventory samples are highly imblanced with respect to the low preforming inventory so care must be taken. This is accomplished by oversampling the minority class to match that of the majority class. In essence, we will be using bootstrap sampling. The hyper-paramerters will be optimized and cross-validated using the Logarithmic Loss function (i.e. log loss). Log loss heavily penalizes any strongly mis-classified prediction and for this reason it was chosen. Precision and Recall are used for the model selection and evaluation. Those values are also cross-validated for robustness.
-
+The high and moderate performing inventory samples are highly imblanced with respect to the low preforming inventory so care must be taken. This is handled by oversampling the minority class to match that of the majority class. In essence, we are using bootstrap sampling. The hyper-paramerters will be optimized and cross-validated using the Logarithmic Loss function (i.e. log loss). Log loss heavily penalizes any strongly mis-classified prediction, and for this reason it was chosen.
 
 ### Dummy Classification
 
 Dummy classification will serve as our baseline model. The classifier will make random predictions on the test dataset based on what it found the class composition to be in the training sample. If the training data had 60% low performing inventory, 30% moderate performing inventory, and 10% high performing inventory then it will make predictions based on these porportions on the test dataset irrepective of what the actual features are of the samples.
 
-The dummy classifier does not generalize well to the test dataset. Its precsion (i.e. about 8%) and recall (i.e. 8%) values are very low and it has a large log loss value.
-
-Therefore, we would like to know if other machine learning algorithms can peform better than the baseline model.
+The dummy classifier does not generalize well to the test dataset. Its precsion (i.e. about 8%) and recall (i.e. 8%) values are very low and it has a large log loss value. Therefore, we would like to know if other machine learning algorithms can peform better than the baseline model.
 
 
 ### Logistic Regression
@@ -110,36 +107,16 @@ Therefore, we would like to know if other machine learning algorithms can peform
 Our first attempt is with a linear model like Logistic Regression. We investigate different regularization parameters and use the one that performs the best.
 
 
-These values may be compared to the previous cross-validated precision and recall values and serves to check that everything is staying consistent.
 
 
-### Gradient Boosting Classifier
+Gradient Boosting Classifier
 
 For our second attempt, we choose a non-linear model that could in essence capture any interaction terms between features the data may have.
 
 
-### Random Forest Classifier
+Random Forest Classifier
 
 Another non-linear model we can use is random forrest which differs from gradient boosted decesion trees in that the former produces trees that are statistically independent.
-
-
-## Overfitting plots
-
-Once the models have been trained and hyper-parameters optimized, we can explore how well they model the data. For example, is the probability distribution for high performing inventory items modeled well between test and training data in the case of the signal and background samples seperately.
-
-In the plots above, the solid blue histograms represent the probability distribution for the background training data while the solid red histograms are for the signal training data. The blue and red dots are for the test data. In the first plot, the signal is the low performing inventory while the moderate and high performing inventory are considered background. In the second plot, the signal is the moderate performing inventory and in the last the signal is the high performing inventory.
-
-### Logistic Regression Classifier
-
-
-We observed that there that the model is not being overtrained on the training data as the background and signal distributions are well model, respectively. There also appears to be a discrimination between the signal and background distributions which is a good indication that the model will perform well but not necessarily. Further investigation will be needed to be sure of this.
-
-
-<img src ="images/logistic regression low.png" width="400" height="306" /><img src ="images/logistic regression moderate.png" width="400" height="306" />
-
-<div style="text-align:center"><img src ="images/logistic regression high.png" width="400" height="306" /></div>
-
-Having used several machine learning algorithms to model the data in order to predict inventory performace we must systematically evaluate each one to select the best one. We accomplish this in the next step.
 
 
 ## Learning Curve
@@ -159,6 +136,9 @@ The plot shows that given the amount of data that is currently available our mod
 An important point to keep in mind is choosing a model that furthers the company's' goals. We would like to help lenders understand which fashion items they should make available to other people. Two metrics worth considering are **precision** and **recall**. The higher the precision the fewer the number of false positives (i.e. classes of no interest which were predicted to be of interest) while the higher the recall the smaller the chances an item of interest is predicted to be of no interest.
 
 We prefer the recall value to be as large as possible for the high and moderate performing inventory because we would like to find as many of them as possible. These will be the fashion items that have the potential to bring in greater revenue for both the client company and lender. Unfortunately, the higher the recall score the lower the precision will be. In our case, we do not necessarily need precision to be relatively large. The consequence of this will mean having additional unpopular apparel on the website, but the company will not actuallly incur any monetary loss only potential loss.
+
+
+Precision and Recall are used for the model selection and evaluation. Those values are also cross-validated for robustness.
 
 
 ## Precision vs Recall
