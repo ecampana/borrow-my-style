@@ -188,12 +188,14 @@ where <img src="images/regression coefficient.png" width="97" height="27" horizo
 
 ### Moderate Performing Inventory against Low Performing Inventory
 
-The model is again trying to suggest that the lender increase the rental price so that it has a higher chance of being a high peforming inventory item than a low performing inventory item, wich goes against intuition. Basically, rental price is not being as powerful of a predictor for rentability as we would have hoped.
 
+
+The model shows that for moderately performing inventory a change in rental price or items size does not have a significant effect on improving rental peformance over low performing inventory. The same is true for item type. Although, it does reveal that brand name has a greater influence on rentability than the other features. The figure below illustrates the regression coefficients.
 
 <div style="text-align:center">
-<img src="images/lr coefficients moderate relative to low.png" width="446" height="287" />
+<img src="images/lr coefficients moderate relative to low.png" width="468" height="301" />
 </div>
+
 
 ### High Performing Inventory against Low Performing Inventory
 
@@ -204,7 +206,7 @@ The reason being is that there is a suggested rental price between 15-20% of the
 
 
 <div style="text-align:center">
-<img src="images/lr coefficients high relative to low.png" width="446" height="287" />
+<img src="images/lr coefficients high relative to low.png" width="468" height="301" />
 </div>
 
 We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
@@ -215,7 +217,7 @@ We are also starting to see a trend of which brand names are popular in the mode
 Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtleties in their differences.
 
 <div style="text-align:center">
-<img src="images/lr coefficients high relative to moderate.png" width="446" height="287" />
+<img src="images/lr coefficients high relative to moderate.png" width="468" height="301" />
 </div>
 
 We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
