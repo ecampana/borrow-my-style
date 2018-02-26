@@ -13,7 +13,7 @@
 
 [**5. Model Performance**](#model_performance)
 
-[**6. The Future Looks Colorful**](#summary)
+[**6. The Future Looks Fashionable**](#summary)
 
 **Page under construction. Please have a look through the git repository. The jupyter notebooks are finalized and describe the analysis in greater detail.**
 
@@ -145,24 +145,22 @@ Precision and Recall are used for the model selection and evaluation. Those valu
 
 ### Low Performing Inventory
 
-<img align="right" width="451" height="356" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
 
-In the plot on the right, random forest and gradient boosted decision trees peform the best but we do not care to model the low performing inventory as best as possible. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
+In the plot below, random forest and gradient boosted decision trees peform the best but we do not care to model the low performing inventory as best as possible. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
 
+<img align="center" width="451" height="356" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
 
 ### Moderate Performing Inventory
 
+In the plot below, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
+
 <img align="right" width="451" height="356" src="images/p vs r moderate performing inventory.png" hspace="40" vspace="40">
-
-In the plot on the right, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
-
 
 ### High Performing Inventory
 
-<img align="right" width="451" height="356" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
-
 In this last plot, we can see that logistic regression out performs random forest. For this reason we select logistic regression as our final model. It has the best recall without sacrificing precision too much.
 
+<img align="right" width="451" height="356" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
 
 
 ## Feature Importance
@@ -171,7 +169,7 @@ Now that we have settled on Logistic Regression with Ridge regularization as our
 ​
 The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase or decrease in the odds of being a high performing item over a low performing item, given by the expression,
 
-<img align="center" width="112" height="9" src="images/change in odds.png" hspace="40" vspace="40">
+<img align="center" width="337" height="27" src="images/change in odds.png" hspace="40" vspace="40">
 
 where <img align="right" width="1162" height="93" src="images/change in odds.png" hspace="40" vspace="40">
 is the coefficient of the rental price for class 1, and similarly for class 0.
@@ -179,25 +177,30 @@ is the coefficient of the rental price for class 1, and similarly for class 0.
 
 ### Moderate Performing Inventory against Low Performing Inventory
 
-The increase in odds of being a moderate performing item for a unit of increase in rental price appears counterintuitive at first. We would expect that as the rental price increases that the item will be less likely to rent. But this is not the case. The reason being is that there is a suggested rental price between 15-20% of the retail price for newer items and 10-15% for older items and so lenders tend to set the price higher for more well known brands. This leads to an artificial dependency of the rental price on the brand name. Had this not been the case then the change in odds would have most likely reflected our intuition.
+The model is again trying to suggest that the lender increase the rental price so that it has a higher chance of being a high peforming inventory item than a low performing inventory item, wich goes against intuition. Basically, rental price is not being as powerful of a predictor for rentability as we would have hoped.
 
-<img align="right" width="446" height="287" src="images/lr coefficients moderate relative to low.png" hspace="40" vspace="40">
+
+<img align="center" width="446" height="287" src="images/lr coefficients moderate relative to low.png" hspace="40" vspace="40">
 
 
 ### High Performing Inventory against Low Performing Inventory
 
-The model is again trying to suggest that the lender increase the rental price so that it has a higher chance of being a high peforming inventory item than a low performing inventory item, wich goes against intuition. Basically, rental price is not being as powerful of a predictor for rentability as we would have hoped.
+The increase in odds of being a moderate performing item for a unit of increase in rental price appears counterintuitive at first. We would expect that as the rental price increases that the item will be less likely to rent. But this is not the case. 
 
-<img align="right" width="446" height="287" src="images/lr coefficients high relative to low.png" hspace="40" vspace="40">
+
+The reason being is that there is a suggested rental price between 15-20% of the retail price for newer items and 10-15% for older items and so lenders tend to set the price higher for more well known brands. This leads to an artificial dependency of the rental price on the brand name. Had this not been the case then the change in odds would have most likely reflected our intuition.
+
+
+<img align="center" width="446" height="287" src="images/lr coefficients high relative to low.png" hspace="40" vspace="40">
 
 We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
 
 
 ### High Performing Inventory against Moderately Performing Inventory
 
-Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtlities in their differences.
+Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtleties in their differences.
 
-<img align="right" width="446" height="287" src="images/lr coefficients high relative to moderate.png" hspace="40" vspace="40">
+<img align="center" width="446" height="287" src="images/lr coefficients high relative to moderate.png" hspace="40" vspace="40">
 
 We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
 
@@ -206,7 +209,7 @@ One last observations to make is that there isn't a significant mismatch between
 
 
 
-# <a name="summary">The Future Looks Colorful</a>
+# <a name="summary">The Future Looks Fashionable</a>
 
 We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items. In the future, we could explre whether the color of fashion items has any impact on rentability.
 
