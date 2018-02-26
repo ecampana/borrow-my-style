@@ -182,7 +182,7 @@ The coefficients of logistic regression are intrepretable. For example, for one 
 <img src="images/change in odds.png" width="337" height="27" />
 </div>
 
-where
+where <img src="images/regression coefficient.png" width="97" height="27" />
 
 <div style="text-align:left">
 <img src="images/regression coefficient.png" width="97" height="27" />
