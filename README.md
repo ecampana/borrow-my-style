@@ -147,22 +147,29 @@ Precision and Recall are used for the model selection and evaluation. Those valu
 
 ### Low Performing Inventory
 
-
 In the plot below, random forest and gradient boosted decision trees peform the best but we do not care to model the low performing inventory as best as possible. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
 
+<div style="text-align:center">
 <img align="center" width="451" height="356" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
+</div>
+
 
 ### Moderate Performing Inventory
 
 In the plot below, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
 
+<div style="text-align:center">
 <img align="center" width="451" height="356" src="images/p vs r moderate performing inventory.png" hspace="40" vspace="40">
+</div>
+
 
 ### High Performing Inventory
 
 In this last plot, we can see that logistic regression out performs random forest. For this reason we select logistic regression as our final model. It has the best recall without sacrificing precision too much.
 
+<div style="text-align:center">
 <img align="center" width="451" height="356" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
+</div>
 
 
 ## Feature Importance
