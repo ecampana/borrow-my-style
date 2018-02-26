@@ -178,6 +178,7 @@ All models had relatively low precision but we should not be overly concerned ab
 
 Now that we have settled on Logistic Regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. What data insights can we extract from our model?  Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between apparel sizes offered by lenders and those sizes demendad by renters? We will focus our efforts on answering these questions.
 ​
+
 Well for this, we can look at the regression coefficients of our logistic model as a means to rank feature importance. The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase or decrease in the odds of being a high performing item over a low performing item, given by the expression,
 
 <div style="text-align:left">
@@ -199,8 +200,7 @@ The model shows that for moderately performing inventory a change in rental pric
 
 ### High Performing Inventory against Low Performing Inventory
 
-With respect to high performing inventory the model indicates the rental price has an effect on rentability. It suggests, by having a postive regression coefficient, that the higher the rental price the better it will perform. This may be counterintuitive at first as we would expect that as the rental price increases that the item will be less likely to rent. One explanation is that the items are perceived as having greater value because of the higher price tag. Another possible explanation is that there is a suggested rental price between 15-20% of the retail price for more recent items and 10-15% for older items and so lenders tend to set the price higher for more well known brands. This leads to an artificial dependency of the rental price on the expensive brand name. Had this not been the case then the change in odds would have most likely reflected our intuition.
-
+With respect to high performing inventory, the model indicates the rental price has an effect on rentability. It suggests, by having a postive regression coefficient, that the higher the rental price is the better it will perform. This may be counterintuitive at first as we would expect that as the rental price increases the item will be less likely to rent. One explanation for this is that the items are perceived as having greater value because of the higher price tag. Another possible explanation is that since there is a suggested rental price, between 15-20% of the retail price for more recent items and 10-15% for older items, lenders tend to set the price higher for more well known brands. This leads to an artificial dependency of the rental price on expensive brand names. Had this not been the case then the change in odds would have most likely reflected our intuition.
 
 <div style="text-align:center">
 <img src="images/lr coefficients high relative to low.png" width="510" height="322" />
