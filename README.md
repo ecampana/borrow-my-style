@@ -174,10 +174,10 @@ Now that we have settled on Logistic Regression with Ridge regularization as our
 ​
 The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase in the odds of being a high performing item over a low performing item, given by the expression,
 
-Δodds = eβrental priceclass 1−βrental priceclass 0
-Δodds = eβclass 1rental price−βclass 0rental price,
+<img align="center" width="1162" height="93" src="images/change in odds.png" hspace="40" vspace="40">
 
-where βrental priceclass 1βclass 1rental price is the coefficient of the rental price for class 1, and similarly for class 0.
+where <img align="right" width="1162" height="93" src="images/change in odds.png" hspace="40" vspace="40">
+is the coefficient of the rental price for class 1, and similarly for class 0.
 
 
 ### Moderate Performing Inventory against Low Performing Inventory
