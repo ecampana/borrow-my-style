@@ -105,9 +105,9 @@ The dummy classifier does not generalize well to the test dataset. Its precsion 
 
 Our first attempt is with a linear model like Logistic Regression. We investigate different regularization parameters and use the one that performs the best. The final logistic regression model had a precision of 12% and recall of 39% for moderate performing items. For high performing inventory the precision and recall were 19% and 52%, respectively. Undoubtedly, we have found a model that performs better than random guessing. 
 
-### Additional classifiers
+### Non-linear or Non-probabilistic Classifiers
 
-Additional classifiers that were considered were Gradient Boosting, Random forest, k-neighbors, and support vector machine. We choose to examine a few non-linear models to see if they could in essence capture any interaction terms between features the data may have. Further details on the exact performance values of these other models may be found in the jupyter notebooks under "[Modeling of Inventory Performance](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)".
+Additional classifiers that were considered were Gradient Boosting, Random forest, K-neighbors, and Support vector machine. We chose to examine a few non-linear models to see if they could in essence capture any interaction terms between features the data may have. Further details on the exact performance values of these other models may be found in the jupyter notebooks under "[Modeling of Inventory Performance](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)".
 
 
 ## Learning Curve
