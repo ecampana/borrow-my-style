@@ -143,21 +143,18 @@ Precision and Recall are used for the model selection and evaluation. Those valu
 
 ## Precision vs Recall
 
-Our cross-validated precision and recall values appear as dots on the figures. We can see that the probabilty thresholds chosen by the algorithm are quite good and do not need to be modified. We must keep in mind that the curves themselves are not cross-validated so they will have statistical fluctations making the cross-validated points not lie completely on the curve.
-
-
 ### Low Performing Inventory
 
 <img align="right" width="451" height="356" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
 
-In the plot to the right, random forest and gradient boosting decision trees peform the best but we do not care to model the low performing inventory as best as we can. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
+In the plot on the right, random forest and gradient boosted decision trees peform the best but we do not care to model the low performing inventory as best as possible. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
 
 
 ### Moderate Performing Inventory
 
 <img align="right" width="451" height="356" src="images/p vs r moderate performing inventory.png" hspace="40" vspace="40">
 
-In the above plot, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
+In the plot on the right, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
 
 
 ### High Performing Inventory
@@ -172,9 +169,9 @@ In this last plot, we can see that logistic regression out performs random fores
 
 Now that we have settled on Logistic Regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between apparel sizes offered by lenders and those sizes demendad by renters? We will focus on answering these questions in this section.
 ​
-The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase in the odds of being a high performing item over a low performing item, given by the expression,
+The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase or decrease in the odds of being a high performing item over a low performing item, given by the expression,
 
-<img align="center" width="1162" height="93" src="images/change in odds.png" hspace="40" vspace="40">
+<img align="center" width="112" height="9" src="images/change in odds.png" hspace="40" vspace="40">
 
 where <img align="right" width="1162" height="93" src="images/change in odds.png" hspace="40" vspace="40">
 is the coefficient of the rental price for class 1, and similarly for class 0.
