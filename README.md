@@ -107,7 +107,7 @@ Our first attempt is with a linear model like Logistic Regression. We investigat
 
 ### Additional classifiers
 
-Additional classifiers that were considered were Gradient Boosting, Random forest, k-neighbors, and support vector machine. We choose to examine a few non-linear models to see if they could in essence capture any interaction terms between features the data may have. Further details 
+Additional classifiers that were considered were Gradient Boosting, Random forest, k-neighbors, and support vector machine. We choose to examine a few non-linear models to see if they could in essence capture any interaction terms between features the data may have. Further details on the exact performance values of these other models may be found in the jupyter notebooks under "[Modeling of Inventory Performance](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)".
 
 
 ## Learning Curve
