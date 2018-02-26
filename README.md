@@ -136,11 +136,7 @@ The plot below shows that given the amount of data that is currently available o
 
 An important point to keep in mind is choosing a model that furthers the company's' goals. We would like to help lenders understand which fashion items they should make available to other people. Two metrics worth considering are **precision** and **recall**. The higher the precision the fewer the number of false positives (i.e. classes of no interest which were predicted to be of interest) while the higher the recall the smaller the chances an item of interest is predicted to be of no interest.
 
-We prefer the recall value to be as large as possible for the high and moderate performing inventory because we would like to find as many of them as possible. These will be the fashion items that have the potential to bring in greater revenue for both the client company and lender. Unfortunately, the higher the recall score the lower the precision will be. In our case, we do not necessarily need precision to be relatively large. The consequence of this will mean having additional unpopular apparel on the website, but the company will not actuallly incur any monetary loss only potential loss.
-
-
-All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. 
-
+We prefer the recall value to be as large as possible for the high and moderate performing inventory since we would like to find as many of those types of items as possible. These will be the fashion items that have the potential to bring in greater revenue for both the client company and lender. Unfortunately, the higher the recall score the lower the precision will be. In our case, we do not necessarily need precision to be especially large. This will mean having additional unpopular apparel on the website, but the company will not actuallly incur any monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. 
 
 ## Precision vs Recall
 
@@ -171,6 +167,10 @@ In this last plot, we can see that logistic regression out performs random fores
 <div style="text-align:center">
 <img align="center" width="451" height="356" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
 </div>
+
+
+
+All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. 
 
 
 ## Feature Importance
