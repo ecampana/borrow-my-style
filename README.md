@@ -107,6 +107,8 @@ The dummy classifier does not generalize well to the test dataset. Its precsion 
 Our first attempt is with a linear model like Logistic Regression. We investigate different regularization parameters and use the one that performs the best.
 
 
+Final precision, recall, f1 score, and support values:
+[array([0.88978235, 0.12006542, 0.18723259]), array([0.5617104 , 0.38764815, 0.52328738])
 
 
 Gradient Boosting Classifier
@@ -169,9 +171,12 @@ Now that we have settled on Logistic Regression with Ridge regularization as our
 ​
 The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase or decrease in the odds of being a high performing item over a low performing item, given by the expression,
 
-<img align="right" width="337" height="27" src="images/change in odds.png" hspace="40" vspace="40">
+<img align="left" width="337" height="27" src="images/change in odds.png" hspace="40" vspace="40">
 
-where <img align="right" width="337" height="27" src="images/change in odds.png" hspace="40" vspace="40">
+where
+
+<img align="left" width="337" height="27" src="images/regression coefficient.png" hspace="40" vspace="40">
+
 is the coefficient of the rental price for class 1, and similarly for class 0.
 
 
