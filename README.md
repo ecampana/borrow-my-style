@@ -107,7 +107,7 @@ Our first attempt is with a linear model like Logistic Regression. We investigat
 
 ### Non-linear or Non-probabilistic Classifiers
 
-Additional classifiers that were considered were Gradient Boosting, Random forest, K-neighbors, and Support vector machine. We chose to examine a few non-linear models to see if they could in essence capture any interaction terms between features the data may have. Further details on the exact performance values of these other models may be found in the jupyter notebooks under "[Modeling of Inventory Performance](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)".
+Additional classifiers that were considered were Gradient Boosting, Random forest, K-neighbors, and Support vector machine. We chose to examine a few non-linear models to see if they could in essence capture any interaction terms between features the data may have. While non-probabilisitic models were chosen to cross check our preferred models. Further details on the exact performance values of these other models may be found in the jupyter notebook under "[Modeling of Inventory Performance](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)".
 
 
 ## Learning Curve
