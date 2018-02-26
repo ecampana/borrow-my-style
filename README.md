@@ -21,14 +21,13 @@
 
 # <a name="introduction">Introduction</a>
 
-Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, as well as shoes and accessories. The purpose of this blog post is to detail the models that were built to evaluate inventory performance and provide a recommendation system for lenders.
+Insight Data Science is an intensive postdoctoral training fellowship that bridges the gap between academia and a career in data science. As part of the program, I had the wonderful opportunity to consult with _Borrow My Style_*, a fashion e-commerce startup. My client company provides a peer-2-peer rental community where they wish to enable people to either rent or sell fashion items such as dresses, handbags, as well as shoes and accessories. Currently, the company has no recommendation system in place for lenders so adding will greatly benefit them. The purpose of this blog post is to detail the models that were built to evaluate inventory performance and provide a recommendation system for lenders.
 
 <div style="text-align:center">
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
 </div>
 
 *For the purposes of anonymity, _Borrow My Style_ is a pseudonym for the consulting client.
-
 
 
 # <a name="data">Challenges with the Data</a>
@@ -185,19 +184,28 @@ The coefficients of logistic regression are intrepretable. For example, for one 
 where <img src="images/regression coefficient.png" width="97" height="27" horizontal="5" /> is the coefficient of the rental price for class 1, and similarly for class 0.
 
 
+What data insights can we extract from our model? Well for this, we can look at the regression coefficients of our logistic model as a way to rank features.
+
 
 ### Moderate Performing Inventory against Low Performing Inventory
-
 
 
 The model shows that for moderately performing inventory a change in rental price or items size does not have a significant effect on improving rental peformance over low performing inventory. The same is true for item type. Although, it does reveal that brand name has a greater influence on rentability than the other features. The figure below illustrates the regression coefficients.
 
 <div style="text-align:center">
-<img src="images/lr coefficients moderate relative to low.png" width="468" height="301" />
+<img src="images/lr coefficients moderate relative to low.png" width="490" height="315" />
 </div>
 
 
 ### High Performing Inventory against Low Performing Inventory
+
+With respect to high performing inventory rental price 
+
+
+The model revealed that rental price has an effect on rentability. It suggests that the higher the rental price the better it will perform. This may be counterintuitive at first. One explanation is that the items are perceived as having higher value because of the higher price tag. Another possible explanation is that lenders price the items at 15-20% of the retail price which causes the rental price to be associated with more expensive brand names.
+
+We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
+
 
 The increase in odds of being a moderate performing item for a unit of increase in rental price appears counterintuitive at first. We would expect that as the rental price increases that the item will be less likely to rent. But this is not the case. 
 
@@ -206,7 +214,7 @@ The reason being is that there is a suggested rental price between 15-20% of the
 
 
 <div style="text-align:center">
-<img src="images/lr coefficients high relative to low.png" width="468" height="301" />
+<img src="images/lr coefficients high relative to low.png" width="490" height="315" />
 </div>
 
 We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
@@ -217,20 +225,18 @@ We are also starting to see a trend of which brand names are popular in the mode
 Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtleties in their differences.
 
 <div style="text-align:center">
-<img src="images/lr coefficients high relative to moderate.png" width="468" height="301" />
+<img src="images/lr coefficients high relative to moderate.png" width="490" height="315" />
 </div>
 
-We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
-
 One last observations to make is that there isn't a significant mismatch between apparal sizes offered by lenders and those sizes renters are interested in. In all is cases the magnitude of the regression coefficient for apparel size was rather small indicating that it does not offer serious predicitve power but on the bright size this means that there is a good renter experience.
-
-
 
 
 # <a name="summary">The Future Looks Fashionable</a>
 
 We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items. In the future, we could investigate other features, for example, ascertaining whether the color of fashion items has any impact on rentability.
 
+
+Well, what does this mean for the company? First, lenders will be able to anticipated how well their items will perform. Secondly, renters will have a better selection of apparel available to them. And lastly, the company expects to measure success based on whether a person lends an item recommended y the system.
 
 ### <a name="about_me">About the Author</a>
 
