@@ -73,10 +73,10 @@ A suitable quantity to track inventory trends is rentability, which we define as
 We study the rentability distribution of items to see if they fall into separate groups, which will serve as our target value for prediction. 
 
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" />
-<figcaption>The rentability is plotted in Log(count) vs Log(average rental per week) to magnify any interesting features the data may have.</figcaption>
+<figcaption>Rentability is plotted in Log(count) vs Log(average rental per week) to magnify any interesting features the data may have.</figcaption>
 </div>
 
-Items that have never rented at any point in time are classified as "Low" performing inventory. We next select a rentability threshold that will allow the top 50% of inventory with large rentability to be labeled as "High" performing while the rest will be classified as "Moderate" performing. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification model.
+Items that have never rented at any point in time are classified as "Low" performing inventory. We next select a rentability threshold that will allow the top 50% of inventory with large rentability to be labeled as "High" performing while the rest will be classified as "Moderate" performing. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification.
 
 <div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
 
@@ -171,21 +171,21 @@ Our cross-validated precision and recall values appear as dots on the figures. W
 
 ### Low Performing Inventory
 
-<img align="right" width="502" height="396" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
+<img align="right" width="451" height="356" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
 
 In the plot to the right, random forest and gradient boosting decision trees peform the best but we do not care to model the low performing inventory as best as we can. It is more important to chose a machine learning algorithm that performs better for high and moderate performing inventory than for low performing inventory.
 
 
 ### Moderate Performing Inventory
 
-<img align="right" width="502" height="396" src="images/p vs r moderate performing inventory.png" hspace="40" vspace="40">
+<img align="right" width="451" height="356" src="images/p vs r moderate performing inventory.png" hspace="40" vspace="40">
 
 In the above plot, both random forest and logistic regression perform the best for moderately performing inventory. For now these are our best candidates.
 
 
 ### High Performing Inventory
 
-<img align="right" width="502" height="396" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
+<img align="right" width="451" height="356" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
 
 In this last plot, we can see that logistic regression out performs random forest. For this reason we select logistic regression as our final model. It has the best recall without sacrificing precision too much.
 
