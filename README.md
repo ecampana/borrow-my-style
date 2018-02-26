@@ -182,12 +182,8 @@ The coefficients of logistic regression are intrepretable. For example, for one 
 <img src="images/change in odds.png" width="337" height="27" />
 </div>
 
-where <img src="images/regression coefficient.png" width="97" height="27" />
-is the coefficient of the rental price for class 1, and similarly for class 0.
+where <img src="images/regression coefficient.png" width="97" height="27" horizontal="5" /> is the coefficient of the rental price for class 1, and similarly for class 0.
 
-<div style="text-align:left">
-<img src="images/regression coefficient.png" width="97" height="27" />
-</div>
 
 
 ### Moderate Performing Inventory against Low Performing Inventory
