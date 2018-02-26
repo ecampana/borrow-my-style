@@ -73,11 +73,10 @@ A suitable quantity to track inventory trends is rentability, which we define as
 We study the rentability distribution of items to see if they fall into separate groups, which will serve as our target value for prediction. 
 
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" />
-<figcaption>The distribution of rentability is plotted in Log(count) vs Log(average rental per week) to zoom into features the data may have.</figcaption>
+<figcaption>The rentability is plotted in Log(count) vs Log(average rental per week) to magnify any interesting features the data may have.</figcaption>
 </div>
 
-
- and for this reason we classify them as "Low" performing inventory if they have never rented. We next select a rentability value tha will enure that top 50% of the inventory with high rentability as "High" performing and the other 50% of the inventory as "Moderate" performing. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification.
+Items that have never rented at any point in time are classified as "Low" performing inventory. We next select a rentability threshold that will allow the top 50% of inventory with large rentability to be labeled as "High" performing while the rest will be classified as "Moderate" performing. The motivation behind chosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a Multi-class classification model.
 
 <div style="text-align:center"><img src ="images/rentability classification.jpg" width="620" height="280" /></div>
 
