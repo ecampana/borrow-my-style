@@ -139,10 +139,12 @@ An important point to keep in mind is choosing a model that furthers the company
 We prefer the recall value to be as large as possible for the high and moderate performing inventory because we would like to find as many of them as possible. These will be the fashion items that have the potential to bring in greater revenue for both the client company and lender. Unfortunately, the higher the recall score the lower the precision will be. In our case, we do not necessarily need precision to be relatively large. The consequence of this will mean having additional unpopular apparel on the website, but the company will not actuallly incur any monetary loss only potential loss.
 
 
-Precision and Recall are used for the model selection and evaluation. Those values are also cross-validated for robustness.
+All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. 
 
 
 ## Precision vs Recall
+
+Precision and Recall are used for the model selection and evaluation. Those values are also cross-validated for robustness.
 
 ### Low Performing Inventory
 
@@ -184,7 +186,7 @@ The coefficients of logistic regression are intrepretable. For example, for one 
 where <img src="images/regression coefficient.png" width="97" height="27" horizontal="5" /> is the coefficient of the rental price for class 1, and similarly for class 0.
 
 
-What data insights can we extract from our model? Well for this, we can look at the regression coefficients of our logistic model as a way to rank features.
+What data insights can we extract from our model? Well for this, we can look at the regression coefficients of our logistic model as a means to rank feature importance.
 
 
 ### Moderate Performing Inventory against Low Performing Inventory
@@ -199,15 +201,17 @@ The model shows that for moderately performing inventory a change in rental pric
 
 ### High Performing Inventory against Low Performing Inventory
 
-With respect to high performing inventory rental price 
+With respect to high performing inventory the model indicates the rental price has an effect on rentability. It suggests the higher the rental price the better it will perform. This may be counterintuitive at first. One explanation is that the items are perceived as having higher value because of the higher price tag. Another possible explanation is that lenders price the items at 15-20% of the retail price which causes the rental price to be associated with more expensive brand names.
+
+We notice that the regression coefficient for rental price is still positive. 
 
 
-The model revealed that rental price has an effect on rentability. It suggests that the higher the rental price the better it will perform. This may be counterintuitive at first. One explanation is that the items are perceived as having higher value because of the higher price tag. Another possible explanation is that lenders price the items at 15-20% of the retail price which causes the rental price to be associated with more expensive brand names.
-
-We notice that the regression coefficient for rental price is still positive. This indicates that the model continues to predict fashion items to rent better if we were to increase the rental price. We expect that with higher volume of rentals this counter intuitive result to reverse.
+The increase in odds of being a moderate performing item for a unit of increase in rental price appears counterintuitive at first. 
 
 
-The increase in odds of being a moderate performing item for a unit of increase in rental price appears counterintuitive at first. We would expect that as the rental price increases that the item will be less likely to rent. But this is not the case. 
+We would expect that as the rental price increases that the item will be less likely to rent. 
+
+But this is not the case. 
 
 
 The reason being is that there is a suggested rental price between 15-20% of the retail price for newer items and 10-15% for older items and so lenders tend to set the price higher for more well known brands. This leads to an artificial dependency of the rental price on the brand name. Had this not been the case then the change in odds would have most likely reflected our intuition.
@@ -233,10 +237,12 @@ One last observations to make is that there isn't a significant mismatch between
 
 # <a name="summary">The Future Looks Fashionable</a>
 
-We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. Although, as a consequence there will be a greater number of low performing items than what is ideal but overall the fashion catalog should decidely improve with apparel that renters desire. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items. In the future, we could investigate other features, for example, ascertaining whether the color of fashion items has any impact on rentability.
+We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items. In the future, we could investigate other features, for example, ascertaining whether the color of fashion items has any impact on rentability.
 
 
 Well, what does this mean for the company? First, lenders will be able to anticipated how well their items will perform. Secondly, renters will have a better selection of apparel available to them. And lastly, the company expects to measure success based on whether a person lends an item recommended y the system.
+
+
 
 ### <a name="about_me">About the Author</a>
 
