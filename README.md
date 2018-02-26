@@ -220,7 +220,12 @@ Another interesting option to consider is what the model has to indicate about h
 <img src="images/lr coefficient size and rental price high relative to moderate.jpg" width="202" height="141" />
 </div>
 
-One last observations to make is that there isn't a significant mismatch between apparal sizes offered by lenders and those sizes renters are interested in. In all is cases the magnitude of the regression coefficient for apparel size was rather small indicating that it does not offer serious predicitve power but on the bright size this means that there is a good renter experience.
+One last observations to make is that there is a noticeable mismatch between apparal sizes offered by lenders and those sizes sought by renters. 
+
+
+In all is cases, the magnitude of the regression coefficient for apparel size was comparable to coefficient of the other features. If lenders offered smaller sizes the chances of an item renting will improve in comparison to low performing inventory. This is not as true between high moderate performing inventory where item size does not seem to make much of a difference as suggested by the small regression coefficient. 
+
+
 
 
 # <a name="summary">The Future Looks Fashionable</a>
