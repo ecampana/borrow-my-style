@@ -193,7 +193,7 @@ What data insights can we extract from our model? Well for this, we can look at 
 The model shows that for moderately performing inventory a change in rental price or items size does not have a significant effect on improving rental peformance over low performing inventory. The same is true for item type. Although, it does reveal that brand name has a greater influence on rentability than the other features. The figure below illustrates the regression coefficients.
 
 <div style="text-align:center">
-<img src="images/lr coefficients moderate relative to low.png" width="500" height="316" />
+<img src="images/lr coefficients moderate relative to low.png" width="510" height="322" />
 </div>
 
 
@@ -214,7 +214,7 @@ The reason being is that there is a suggested rental price between 15-20% of the
 
 
 <div style="text-align:center">
-<img src="images/lr coefficients high relative to low.png" width="500" height="316" />
+<img src="images/lr coefficients high relative to low.png" width="510" height="322" />
 </div>
 
 We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
@@ -222,10 +222,10 @@ We are also starting to see a trend of which brand names are popular in the mode
 
 ### High Performing Inventory against Moderately Performing Inventory
 
-Another interesting option to consider is what the model has to say about high performing items against moderately peforming items. This will allow us to understand slight subtleties in their differences.
+Another interesting option to consider is what the model has to indicate about high performing items against moderately peforming items. This will allow us to understand slight subtleties in their differences.
 
 <div style="text-align:center">
-<img src="images/lr coefficients high relative to moderate.png" width="500" height="316" />
+<img src="images/lr coefficients high relative to moderate.png" width="510" height="322" />
 </div>
 
 One last observations to make is that there isn't a significant mismatch between apparal sizes offered by lenders and those sizes renters are interested in. In all is cases the magnitude of the regression coefficient for apparel size was rather small indicating that it does not offer serious predicitve power but on the bright size this means that there is a good renter experience.
