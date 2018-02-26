@@ -195,7 +195,7 @@ The model shows that for moderately performing inventory a change in rental pric
 
 <div style="text-align:center">
 <img src="images/lr coefficients moderate relative to low.png" width="510" height="322" />
-<img src="images/lr coefficient size and rental price moderate relative to low.jpg" width="289" height="202" />
+<img src="images/lr coefficient size and rental price moderate relative to low.jpg" width="231" height="161" />
 </div>
 
 
@@ -205,6 +205,7 @@ With respect to high performing inventory, the model indicates the rental price 
 
 <div style="text-align:center">
 <img src="images/lr coefficients high relative to low.png" width="510" height="322" />
+<img src="images/lr coefficient size and rental price high relative to low.jpg" width="231" height="161" />
 </div>
 
 We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
@@ -216,6 +217,7 @@ Another interesting option to consider is what the model has to indicate about h
 
 <div style="text-align:center">
 <img src="images/lr coefficients high relative to moderate.png" width="510" height="322" />
+<img src="images/lr coefficient size and rental price high relative to moderate.jpg" width="231" height="161" />
 </div>
 
 One last observations to make is that there isn't a significant mismatch between apparal sizes offered by lenders and those sizes renters are interested in. In all is cases the magnitude of the regression coefficient for apparel size was rather small indicating that it does not offer serious predicitve power but on the bright size this means that there is a good renter experience.
@@ -223,11 +225,11 @@ One last observations to make is that there isn't a significant mismatch between
 
 # <a name="summary">The Future Looks Fashionable</a>
 
-We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items. In the future, we could investigate other features, for example, ascertaining whether the color of fashion items has any impact on rentability.
+We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Logistic regression had the best performance for identifying high and moderate performing items by possessing a high recall value without the need to sacrafice precision too much. 
 
+Well, what does this mean for the company? First, lenders will be able to anticipated how well their items will perform. Secondly, renters will have a better selection of apparel available to them. 
 
-Well, what does this mean for the company? First, lenders will be able to anticipated how well their items will perform. Secondly, renters will have a better selection of apparel available to them. And lastly, the company expects to measure success based on whether a person lends an item recommended y the system.
-
+Going forward the fashion company can use the model to construct a recommendation system for lenders to guide them to share better peforming fasshion items. The company expects to measure success based on whether a person lends an item recommended y the system. In the future, we could investigate other features, for example, ascertaining whether the color of fashion items has any impact on rentability.
 
 
 ### <a name="about_me">About the Author</a>
