@@ -156,12 +156,9 @@ The plot shows that given the amount of data that is currently available our mod
 
 [Model performance (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/model-performance.ipynb)
 
+An important point to keep in mind is choosing a model that furthers the company's' goals. We would like to help lenders understand which fashion items they should make available to other people. Two metrics worth considering are **precision** and **recall**. The higher the precision the fewer the number of false positives (i.e. classes of no interest which were predicted to be of interest) while the higher the recall the smaller the chances an item of interest is predicted to be of no interest.
 
-In this notebook, we center our attention to evaluating our various models in a more systematic fashion. An important idea to keep in mind is choosing a model that furthers the companies objective. We would like to help lenders understand which fashion items they should make available to others.
-
-Two metrics worth considering are Precision and Recall. The higher the precision the lower the number of false positives (i.e. classes of no interest but were predicted to be of interest). While the higher the recall the smaller the chances an item of interest is predicted to be of no interest.
-
-We prefer the recall value to be as high as possible for the high and moderate performing inventory because we would like to find as many of them as possible. Those are the fashion items that have the potential to bring in more revenue for both the lender and client company. Unfortunately, the higher the recall the lower the precision will be. For our case, we do not necessarily need precision to be all that high for the high and moderate performing inventory. The consequences of this will mean having more unwanted fashion items in the peer-2-peer rental community but the company will not actuallly incur any monetary loss only potential loss.
+We prefer the recall value to be as large as possible for the high and moderate performing inventory because we would like to find as many of them as possible. These will be the fashion items that have the potential to bring in more revenue for both lender and client company. Unfortunately, the higher the recall the lower the precision will be. For our case, we do not necessarily need precision to be relatively large for the high and moderate performing inventory. The consequences of this will mean having more unpopular apparel in the peer-2-peer rental community but the company will not actuallly incur any monetary loss only potential loss.
 
 
 ## Precision vs Recall
