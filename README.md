@@ -98,26 +98,16 @@ The high and moderate performing inventory samples are highly imblanced with res
 
 Dummy classification will serve as our baseline model. The classifier will make random predictions on the test dataset based on what it found the class composition to be in the training sample. If the training data had 60% low performing inventory, 30% moderate performing inventory, and 10% high performing inventory then it will make predictions based on these porportions on the test dataset irrepective of what the actual features are of the samples.
 
-The dummy classifier does not generalize well to the test dataset. Its precsion (i.e. about 8%) and recall (i.e. 8%) values are very low and it has a large log loss value. Therefore, we would like to know if other machine learning algorithms can peform better than the baseline model.
+The dummy classifier does not generalize well to the test dataset. Its precsion and recall values were about 8% for both moderate and high performing inventory. Therefore, we would like to know if other machine learning algorithms can peform better than this baseline model.
 
 
 ### Logistic Regression
 
-Our first attempt is with a linear model like Logistic Regression. We investigate different regularization parameters and use the one that performs the best.
+Our first attempt is with a linear model like Logistic Regression. We investigate different regularization parameters and use the one that performs the best. The final logistic regression model had a precision of 12% and recall of 39% for moderate performing items. For high performing inventory the precision and recall were 19% and 52%, respectively. Undoubtedly, we have found a model that performs better than random guessing. 
 
+### Additional classifiers
 
-Final precision, recall, f1 score, and support values:
-[array([0.88978235, 0.12006542, 0.18723259]), array([0.5617104 , 0.38764815, 0.52328738])
-
-
-Gradient Boosting Classifier
-
-For our second attempt, we choose a non-linear model that could in essence capture any interaction terms between features the data may have.
-
-
-Random Forest Classifier
-
-Another non-linear model we can use is random forrest which differs from gradient boosted decesion trees in that the former produces trees that are statistically independent.
+Additional classifiers that were considered were Gradient Boosting, Random forest, k-neighbors, and support vector machine. We choose to examine a few non-linear models to see if they could in essence capture any interaction terms between features the data may have. Further details 
 
 
 ## Learning Curve
@@ -168,7 +158,6 @@ In this last plot, we can see that logistic regression out performs random fores
 <div style="text-align:center">
 <img align="center" width="451" height="356" src="images/p vs r high performing inventory.png" hspace="40" vspace="40">
 </div>
-
 
 
 All models had relatively low precision but we should not be overly concerned about this issue since unintentially allowing lenders to share items that may not perform as well as they expect will not cause the client company to incur unnecessary monetary loss. 
