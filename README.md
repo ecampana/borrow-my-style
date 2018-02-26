@@ -169,7 +169,7 @@ Now that we have settled on Logistic Regression with Ridge regularization as our
 ​
 The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an time, we expect to see increase or decrease in the odds of being a high performing item over a low performing item, given by the expression,
 
-<img align="center" width="337" height="27" src="images/change in odds.png" hspace="40" vspace="40">
+<img align="right" width="337" height="27" src="images/change in odds.png" hspace="40" vspace="40">
 
 where <img align="right" width="337" height="27" src="images/change in odds.png" hspace="40" vspace="40">
 is the coefficient of the rental price for class 1, and similarly for class 0.
