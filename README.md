@@ -165,7 +165,7 @@ All models had relatively low precision but we should not be overly concerned ab
 
 ## Feature Importance
 
-Now that we have settled on Logistic Regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. What data insights can we extract from our model?  Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between apparel sizes offered by lenders and those sizes demendad by renters? We will focus our efforts on answering these questions.
+Now that we have settled on Logistic Regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. What data insights can we extract from our model?  Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between apparel sizes offered by lenders and those sizes demanded by renters? We will focus our efforts on answering these questions.
 ​
 
 Well for this, we can look at the regression coefficients of our logistic model as a means to rank feature importance. The coefficients of logistic regression are intrepretable. For example, for one unit of increase in the rental price of an item, we expect to see an increase or decrease in the odds of being a high performing item over a low performing item, given by the expression,
