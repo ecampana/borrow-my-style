@@ -15,9 +15,6 @@
 
 [**6. The Future Looks Fashionable**](#summary)
 
-**Page under construction. Please have a look through the git repository. The Jupyter notebooks are finalized and describe the analysis in greater detail.**
-
-
 
 # <a name="introduction">Introduction</a>
 
@@ -27,7 +24,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
 </div>
 
-I was tasked with creating a recommendation system to help garment lenders know which of their items will get rented most frequently so that they can offer more popular items and the company can enhance their revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by all lenders, namely brand name, item type, apparel size, and rental price.
+I was tasked with creating a recommendation system to help garment lenders know which of their items will get rented most frequently allowing the client to offer their more popular items, enhancing both user experience and company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by all lenders, namely brand name, item type, apparel size, and rental price.
 
 *For the purposes of anonymity, _Borrow My Style_ is a pseudonym for the consulting client.
 
@@ -37,14 +34,14 @@ I was tasked with creating a recommendation system to help garment lenders know 
 [Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-The company is a young start up with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database that contained about six thousand apparel item samples collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not provide enough information to be of any use. With that in mind, the rest of the data had a wealth of information. The data exploration revealed that much of the inventory is under utilized which really eliminated the possibility of using standard forecasting models to predict inventory trends.
+The company is a vibrant young startup with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database that contained about six thousand apparel item samples collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not provide enough information to be of any use. With that in mind, the rest of the data had a wealth of information. The data exploration revealed that much of the inventory is under utilized which meant that using standard forecasting models to predict inventory trends was not viable.
 
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="630" height="320" /></div>
 
 Brand names were curated to remove any variability in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but our main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
 
-Moving forward we will only consider apparel (i.e. "tops", "skirts", "pants", "outerwear", "rompers", "shirts", "dresses", and "bottoms") in our modeling while handbags, shoes, and accessories can be modeled independently. 
+Moving forward we will only consider the following apparels, “tops”, “skirts”, “pants”, “outerwear”, “rompers”, “shirts”, “dresses”, and “bottoms”,  in our modelling while handbags, shoes, and accessories can be modeled independently. 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
 
@@ -67,7 +64,7 @@ The apparel size and rental price are standardized for all models even though so
 
 ## Choosing Rentability as the Predicted Measure
 
-It is insufficient to merely predict whether an item will be rented since a lender will not be aware under what circumstances their item is predicted to be rented. The model is implicitly assuming the apparel will be available for at least a certain amount of time because this is what it observed in the training data for similar items. This situation is not ideal so taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
+It is insufficient to merely predict whether an item will be rented since a lender will not be aware under what circumstances their item is predicted to be rented. The model is implicitly assuming the apparel will be available for at least a certain amount of time since this is what it observed in the training data for similar items. This situation is not ideal therefore taking inventory lifetime into account in some manner will go a long way in resolving the dilemma. 
 
 A suitable quantity to track inventory trends is rentability, which we define as the average number rentals per week (i.e. rental count/lifetime). The lifetime is calculated by taking the difference between the date the item was last listed and the date it was first listed. The result are given in units of days and for this reason we divide by seven so that we may report the lifetime in number of weeks.
 
@@ -99,7 +96,7 @@ We are now ready to model inventory trends for our client company. The main focu
 
 We explore several machine learning models that are inherently multi-class classifiers. Models that are interpretable are preferred for implementation, while less interpretable models are used as benchmarks.
 
-Looking at the distribution of rentability rates in Figure 1, we can see that there are far more apparels that fall in the low rentability bin than in the moderate or high rentability bins. Classification models perform best when every bin contains a similar number of samples. Therefore, we artificially increase the number of samples in the moderate and high rentability bins through a process known as bootstrapping (i.e. oversampling with replacement of the minority class). The hyper-parameters will be optimized and cross-validated using the Logarithmic Loss function (i.e. log loss). Log loss heavily penalizes any strongly mis-classified prediction, and for this reason it was chosen.
+Looking at the distribution of rentability rates in Figure 1, we can see that there are far more apparels that fall in the low rentability category than in the moderate or high rentability categories. Classification models perform best when every bin contains a similar number of samples. Therefore, we artificially increase the number of samples in the moderate and high rentability bins through a process known as bootstrapping (i.e. oversampling with replacement of the minority class). The hyper-parameters of the classifier algorithm will be optimized and cross-validated using the Logarithmic Loss function (i.e log loss). Log loss heavily penalizes any strongly mis-classified prediction, and for this reason it was chosen as our objective function to minimise.
 
 
 ### Dummy Classification
@@ -112,11 +109,11 @@ As expected, the dummy classifier performs worse on the test dataset than on the
 
 ### Logistic Regression
 
-Our first attempt is with a linear model like **Multinomial logistic regression with Ridge regularization**. We investigate different regularization parameters and use the one that performs the best. The final logistic regression model had a precision of 12% and recall of 39% for moderate-performing items. For high-performing inventory the precision and recall were 19% and 52%, respectively. Undoubtedly, we have found a model that performs better than random guessing. 
+Our first attempt is to use a linear model like **Multinomial logistic regression with Ridge regularization**. We investigate different regularization parameters and use the one that performs the best. The final logistic regression model had a precision of 12% and recall of 39% for moderate-performing items. For high-performing inventory the precision and recall were 19% and 52%, respectively. Undoubtedly, we have found a model that performs better than random guessing. 
 
 ### Non-linear or Non-probabilistic Classifiers
 
-I used non-linear models (**Gradient boosting** and **Random forest**) to explore whether the data contained any variables whose interaction terms had predictive value. Additionally, non-probabilisitic models (**K-neighbors** and **Support vector machine**) were chosen to cross check our preferred models. The findings of these studies are detailed in the Jupyter notebook under "[Modeling of Inventory Performance](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)".
+Next, I employed non-linear models (**Gradient boosting** and **Random forest**) to explore whether the data contained any variables whose interaction terms had predictive value. Additionally, non-probabilisitic models (**K-neighbors** and **Support vector machine**) were chosen to cross check our preferred models. The findings of these studies are detailed in the Jupyter notebook under "[Modeling of Inventory Performance](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)".
 
 
 ## Learning Curve
@@ -132,7 +129,7 @@ In the plot below, the negative log loss is shown as a function of training samp
 
 [Model performance (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/model-performance.ipynb)
 
-My primary focus was to choose a model that fulfills the company's goal of helping lenders understand which fashion items they should make available to other people. To compare the performance of different model configurations, two metrics tracked were **precision** and **recall**. The higher the precision the fewer the number of false positives (i.e. classes of no interest which were predicted to be of interest) while the higher the recall the smaller the chances an item of interest is predicted to be of no interest.
+My primary focus was to choose a model that fulfills the company's goal of helping lenders understand which fashion items they should make available to other people. To compare the performance of different model configurations, two metrics tracked were **precision** and **recall**. The higher the precision the fewer number of false positives, meaning items of no interest predicted to be of interest, while the higher the recall the smaller the chances an item of interest being predicted to be of no interest (i.e. false negative).
 
 For this project, having a high recall value for the moderate and high rentability bins took priority because we want the model to find as many of those types of items as possible. These will be the fashion items that have the potential to bring in greater revenue for both the client company and lender. Unfortunately, the higher the recall score the lower the precision will be. In our case, we do not necessarily need precision to be especially large. Although, as a consequence there will be a greater number of low-performing items on the website than what is ideal but overall the fashion catalog should decidedly improve with apparel that renters demand.
 
@@ -231,4 +228,3 @@ We have explored a few years worth of inventory data and attempted to model thei
 <img align="right" width="290" height="289" src="images/IMG_2431_circular.png" hspace="25">
 
 My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and online advertising industry. I had the opportunity to worked on predicting viewability of digital ads to improve advertiser spending.
-
