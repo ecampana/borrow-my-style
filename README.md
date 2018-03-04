@@ -76,7 +76,7 @@ We choose the size and number of bins in which to break up the observed rentabil
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" />
 <figcaption>
 <font size="2">
-Figure 1: Rentability rates in Log(count) vs Log(average rental per week) scale 
+Figure 1: Rentability rates in Log(count) vs Log(average rental per week) scale <br>
 to magnify any interesting features the data may have.
 </font>
 </figcaption>
@@ -211,7 +211,7 @@ With respect to high-performing inventory, the model indicates the rental price 
 We are also starting to see a trend of which brand names are popular in the moderate and high-performing inventory category.
 
 
-### Any difference between high and moderate performing?
+### Any differences between high and moderate performing?
 
 Comparing model results for high-performing items versus moderate-performing ones uncovers some interesting subtleties.
 
