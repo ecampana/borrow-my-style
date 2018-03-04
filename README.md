@@ -227,6 +227,15 @@ We have explored a few years worth of inventory data and attempted to model thei
 
 ### <a name="about_me">About the Author</a>
 
+<div id="circle-shape-example">
+<img src="images/IMG_2431_circular.png" alt="A photograph of sliced kiwifruit on a while plate" class="curve">
+<h1>
+KiwiFruit
+</h1>
+
+<p>This is kiwifruit: originally called “yang tao”, “melonette” or Chinese gooseberry. Cultivated in its fuzzy variety from Chinese imports, the fruit proved popular with American military servicemen stationed in New Zealand during World War II, with commercial export to the United States starting after the end of the war. In California, the fruit was rebranded as “kiwifruit” due to its resemblance to New Zealand’s national bird. However, it is not a “kiwi”, which is also the demonym for native New Zealanders. Saying “I’m going to eat a kiwi” implies that you are either a cannibal or planning to dine on an endangered flightless bird.
+</div>
+
 
 <img align="left" width="300" height="299" src="images/IMG_2431_circular.png" hspace="40" vspace="40">
 
