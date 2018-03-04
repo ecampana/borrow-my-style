@@ -99,8 +99,6 @@ We are now ready to model inventory trends for our client company. The main focu
 
 We explore several machine learning models that are inherently multi-class classifiers. Models that are interpretable are preferred for implementation, while less interpretable models are used as benchmarks.
 
-The high and moderate-performing inventory samples are highly imbalanced with respect to the low preforming inventory so care must be taken. This is handled by oversampling the minority class to match that of the majority class. In essence, we are using bootstrap sampling.
-
 Looking at the distribution of rentability rates in Figure 1, we can see that there are far more apparels that fall in the low rentability bin than in the moderate or high rentability bins. Classification models perform best when every bin contains a similar number of samples. Therefore, we artificially increase the number of samples in the moderate and high rentability bins through a process known as bootstrapping (i.e. oversampling with replacement of the minority class). The hyper-parameters will be optimized and cross-validated using the Logarithmic Loss function (i.e. log loss). Log loss heavily penalizes any strongly mis-classified prediction, and for this reason it was chosen.
 
 
@@ -109,7 +107,7 @@ Looking at the distribution of rentability rates in Figure 1, we can see that th
 In order to quantify the minimum acceptable performance for a classification model, we employ a **dummy classifier**. The classifier makes random predictions on the test dataset based on what it found the class composition to be in the training sample. If the training data had 60% low-performing inventory, 30% moderate-performing inventory, and 10% high-performing inventory then it will make predictions based on these proportions on the test dataset irrespective of the samples' actual features.
 
 
-As expected, the dummy classifier performs worse on the test dataset than on the training dataset. Its precision and recall values were about 8% for both moderate and high-performing inventory. Therefore, we would like to know if other machine learning algorithms can perform better than this baseline model.
+As expected, the dummy classifier performs worse on the test dataset than on the training dataset. Its precision and recall values were about 8% for both moderate and high performing inventory. Therefore, we would like to know if other machine learning algorithms can perform better than this baseline model.
 
 
 ### Logistic Regression
@@ -123,7 +121,7 @@ I used non-linear models (**Gradient boosting** and **Random forest**) to explor
 
 ## Learning Curve
 
-In the plot below, the negative log loss is shown as a function of training sample size. The training score curve consistently lies below the cross-validation score curve. This indicates that having more data will enhance the model performance. As the company continues to rent or sell more inventory, garment lenders will receive more accurate predictions of how frequently their apparels will be rented. 
+In the plot below, the negative log loss is shown as a function of training sample size. We notice that no sample size optimizes the training score curve since it never peaks or plateaus. This indicates that having more data will enhance the model performance. As the company continues to rent or sell more inventory, garment lenders will receive more accurate predictions of how frequently their apparels will be rented. 
 
 <div style="text-align:center">
 <img src ="images/learning curve logistic regression.png" width="459" height="348" />
@@ -141,11 +139,11 @@ For this project, having a high recall value for the moderate and high rentabili
 
 ## Precision vs Recall
 
-Precision and recall will used for the model selection and evaluation and, in addition, they are cross-validated for robustness.
+Precision and recall are used for the model selection and evaluation and, in addition, they are cross-validated for robustness.
 
 ### Low Performing Inventory
 
-In the plot below, which compares how precisely different models classified low-performing inventory, random forest and gradient boosted decision trees perform the best but we do not care to model the low-performing inventory as best as possible. It is more important to chose a machine learning algorithm that performs better for high and moderate-performing inventory than for low-performing inventory.
+In the plot below, which compares how precisely different models classified low-performing inventory, random forest and gradient boosted decision trees perform the best, but we do not care to model the low-performing inventory as best as possible. It is more important to chose a machine learning algorithm that performs better for high and moderate-performing inventory than for low performing inventory.
 
 <div style="text-align:center">
 <img align="center" width="451" height="356" src="images/p vs r low performing inventory.png" hspace="40" vspace="40">
@@ -175,7 +173,7 @@ All models had relatively low precision but we should not be overly concerned ab
 
 ## Feature Importance
 
-Now that we have settled on Multinomial logistic regression with Ridge regularization as our model to evaluate inventory performance we can use it to extract insight about our data. What data insights can we extract from our model? Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between apparel sizes offered by lenders and those sizes demanded by renters? We will focus our efforts on answering these questions.
+Now that we have settled on Multinomial logistic regression with Ridge regularization as our model to evaluate inventory performance we can use it to understand our data. What data insights can we extract from our model? Are there some brands more popular than others? Does rental price have an effect on rentability? Is there a mismatch between apparel sizes offered by lenders and those sizes demanded by renters? We will focus our efforts on answering these questions.
 ​
 
 We can use the regression coefficients of our logistic model as a way to rank the relative predictive importance of each feature. The coefficients of logistic regression are interpretable. For example, for one unit of increase in the rental price of an item, we expect to see an increase or decrease in the odds of being a high-performing item over a low-performing item, given by the expression,
@@ -198,7 +196,6 @@ The model indicates that the rental price, apparel size, and item type do not st
 </div>
 
 
-
 ### What makes an item high performing?
 
 With respect to high-performing inventory, the model indicates the rental price has an effect on rentability. It suggests, by having a positive regression coefficient, that the higher the rental price is the better it will perform. This may be counterintuitive at first as we would expect that as the rental price increases the item will be less likely to rent. One explanation for this is that the items are perceived as having greater value because of the higher price tag. Another possible explanation is that since there is a suggested rental price of about 15% of the retail price lenders tend to set the price higher for more well-known brands. This causes the rental price to be correlated with expensive brand names. Had this not been the case then the change in odds would have most likely reflected our intuition.
@@ -208,7 +205,7 @@ With respect to high-performing inventory, the model indicates the rental price 
 <img src="images/lr coefficient size and rental price high relative to low.jpg" width="202" height="141" />
 </div>
 
-We are also starting to see a trend of which brand names are popular in the moderate and high-performing inventory category.
+We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
 
 
 ### Any differences between high and moderate performing?
