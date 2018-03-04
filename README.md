@@ -76,7 +76,8 @@ We choose the size and number of bins in which to break up the observed rentabil
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" />
 <figcaption>
 <font size="2">
-Figure 1: Rentability rates in Log(count) vs Log(average rental per week) scale to magnify any interesting features the data may have.
+Figure 1: Rentability rates in Log(count) vs Log(average rental per week) scale 
+to magnify any interesting features the data may have.
 </font>
 </figcaption>
 </div>
