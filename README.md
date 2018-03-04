@@ -228,7 +228,7 @@ We have explored a few years worth of inventory data and attempted to model thei
 ### <a name="about_me">About the Author</a>
 
 <div id="circle-shape-example">
-<img src="images/IMG_2431_circular.png" alt="A photograph of sliced kiwifruit on a while plate" class="curve">
+<img width="300" height="299" src="images/IMG_2431_circular.png" alt="A photograph of sliced kiwifruit on a while plate" class="curve">
 <h1>
 KiwiFruit
 </h1>
