@@ -24,7 +24,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
 </div>
 
-I was tasked with creating a recommendation system to help garment lenders know which of their items will get rented most frequently allowing the client to offer their more popular items, enhancing both user experience and company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by all lenders, namely brand name, item type, apparel size, and rental price.
+I was tasked with creating a recommendation system to help garment lenders know which of their items will get rented most frequently allowing the client to offer more popular items, enhancing both user experience and company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by all lenders, namely brand name, item type, apparel size, and rental price.
 
 *For the purposes of anonymity, _Borrow My Style_ is a pseudonym for the consulting client.
 
