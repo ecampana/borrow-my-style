@@ -228,7 +228,7 @@ We have explored a few years worth of inventory data and attempted to model thei
 ### <a name="about_me">About the Author</a>
 
 
-<img align="right" width="290" height="289" src="images/IMG_2431_circular.png" hspace="20" "vspace="140">
+<img align="right" width="290" height="289" src="images/IMG_2431_circular.png" hspace="20" vspace="140">
 
 My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and online advertising industry. I had the opportunity to worked on predicting viewability of digital ads to improve advertiser spending.
 
