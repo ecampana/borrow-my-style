@@ -205,7 +205,7 @@ With respect to high-performing inventory, the model indicates the rental price 
 We are also starting to see a trend as to which brand names are the most popular in the moderate and high performing inventory category.
 
 
-### Any differences between high and moderate performing?
+### Any differences between high and moderate performing items?
 
 Comparing model results for high-performing items versus moderate-performing ones uncovers some interesting subtleties.
 
