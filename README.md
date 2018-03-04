@@ -205,7 +205,7 @@ With respect to high-performing inventory, the model indicates the rental price 
 <img src="images/lr coefficient size and rental price high relative to low.jpg" width="202" height="141" />
 </div>
 
-We are also starting to see a trend of which brand names are popular in the moderate and high performing inventory category.
+We are also starting to see a trend as to which brand names are the most popular in the moderate and high performing inventory category.
 
 
 ### Any differences between high and moderate performing?
@@ -222,10 +222,13 @@ One last observation is that, for low-performing garments, lenders tend to offer
 
 # <a name="summary">The Future Looks Fashionable</a>
 
-We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Multinomial logistic regression had the best performance for identifying high and moderate-performing items by exhibiting a high recall value without the need to greatly sacrifice precision. What does this mean for the company? Going forward the company can use the model to construct a recommendation system for lenders to guide them to share better performing fashion items. And, renters will have a better selection of apparel available to them. The company expects to measure success based on whether a person lends an item recommended y the system. In the future, we could investigate other features, for example, ascertaining whether the color of fashion items has any impact on rentability.
+We have explored a few years worth of inventory data and attempted to model their rentability in order to help lenders understand which items to make available to other people. Multinomial logistic regression had the best performance for identifying high and moderate-performing items by exhibiting a high recall value without the need to greatly sacrifice precision. What does this mean for _Borrow My Style_? Going forward they can use the model to construct a recommendation system for lenders to guide them in sharing potentially better performing fashion items. And, renters will have a better selection of apparel available to them. The company expects to measure success based on whether a person lends an item recommended by the system. In the future, we could investigate other features, for example, ascertaining whether the color of fashion items has any impact on rentability.
 
 
 ### <a name="about_me">About the Author</a>
 
-My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and advertising industry. I had the opportunity to worked on predicting viewability of digital ads to improve advertiser spending.
+
+<img align="left" width="300" height="299" src="images/IMG_2431_circular.png" hspace="40" vspace="40">
+
+My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and online advertising industry. I had the opportunity to worked on predicting viewability of digital ads to improve advertiser spending.
 
