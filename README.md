@@ -74,8 +74,11 @@ A suitable quantity to track inventory trends is rentability, which we define as
 We choose the size and number of bins in which to break up the observed rentability rates, as shown in Figure 1. 
 
 <div style="text-align:center"><img src ="images/rentability.jpg" width="494" height="379" />
+<figcaption>
 <font size="2">
-<figcaption>Figure 1: Rentability rates in Log(count) vs Log(average rental per week) scale to magnify any interesting features the data may have.</figcaption>
+Figure 1: Rentability rates in Log(count) vs Log(average rental per week) scale to magnify any interesting features the data may have.
+</font>
+</figcaption>
 </div>
 
 Items that have never rented at any point in time are classified as "Low" performing inventory. We next select a rentability threshold that will allow the top 50% of inventory with large rentability rates to be labeled as "High" performing while the rest will be classified as "Moderate" performing. The motivation behind choosing 50% was to ensure that each rentability classification will have enough statistics for our modeling. We have now framed the problem as a multi-class classification.
