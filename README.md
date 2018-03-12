@@ -24,7 +24,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
 </div>
 
-I was tasked with creating a recommendation system to help garment lenders know which of their items will get rented most frequently allowing the client to offer more popular items, enhancing both user experience and company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by all lenders, namely brand name, item type, apparel size, and rental price.
+I was tasked with creating a recommendation system to help garment lenders know which of their items will get rented most frequently, allowing the client to offer more popular items. This will enhancing user experience and increasing company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by lenders — brand name, item type, apparel size, and rental price.
 
 *For the purposes of anonymity, _Borrow My Style_ is a pseudonym for the consulting client.
 
@@ -34,14 +34,14 @@ I was tasked with creating a recommendation system to help garment lenders know 
 [Data cleanining pipeline (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/data-cleaning-pipeline.ipynb)
 
 
-The company is a vibrant young startup with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database that contained about six thousand apparel item samples collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not provide enough information to be of any use. With that in mind, the rest of the data had a wealth of information. The data exploration revealed that much of the inventory is under utilized which meant that using standard forecasting models to predict inventory trends was not viable.
+The company is a vibrant startup with a small technical team. They are immensely interested in finding ways to explore the data and extract fashion trends that could help lenders. Their inventory data is stored on a Heroku PostgreSQL database that contained about 6000 apparel item samples collect during a three year period. The data contained a small fraction of samples that needed to be removed simply because they did not provide enough information to be of any use. With that in mind, the rest of the data had a wealth of information. The data exploration revealed that much of the inventory is under utilized which meant that using standard forecasting models to predict inventory trends was not viable.
 
 
 <div style="text-align:center"><img src ="images/data preperation.jpg" width="630" height="320" /></div>
 
 Brand names were curated to remove any variability in their spellings. This reduced the list of brand names by 30%. More advance techniques, such as Natural Language Processing (NLP), to determine text similarity between brand names could have been used but our main concern regarded brand names that are related but appear with completely different spellings. For example, lenders could list their item as "marciano" which is a brand of Guess under the more formal labeling Guess by Marciano. Domain knowledge was instrumental to guarantee that items were associated with the appropriate brand name, and in this instance with "guess".
 
-Moving forward we will only consider the following apparels, “tops”, “skirts”, “pants”, “outerwear”, “rompers”, “shirts”, “dresses”, and “bottoms”,  in our modelling while handbags, shoes, and accessories can be modeled independently. 
+Moving forward we will only consider the following apparels, _tops_, _skirts_, _pants_, _outerwear_, _rompers_, _shirts_, _dresses_, and _bottoms_,  in our modelling while handbags, shoes, and accessories can be modeled independently. 
 
 # <a name="feature_engineering">Fun with Feature Engineering</a>
 
@@ -227,4 +227,4 @@ We have explored a few years worth of inventory data and attempted to model thei
 
 <img align="right" width="290" height="289" src="images/IMG_2431_circular.png" hspace="25">
 
-My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and online advertising industry. I had the opportunity to worked on predicting viewability of digital ads to improve advertiser spending.
+My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and online advertising industry. I had the opportunity to work on predicting viewability of digital ads to improve advertiser spending.
