@@ -24,7 +24,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
 </div>
 
-I was tasked with creating a recommendation system to help garment lenders know which of their items will get rented most frequently, allowing the client to offer more popular items. This will enhancing user experience and increasing company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by lenders — brand name, item type, apparel size, and rental price.
+I was tasked with creating a recommendation system to help garment lenders know which of their items will be rented most frequently, allowing the client to offer more popular items. This will enhancing user experience and increasing company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by lenders — brand name, item type, apparel size, and rental price.
 
 *For the purposes of anonymity, _Borrow My Style_ is a pseudonym for the consulting client.
 
@@ -227,4 +227,4 @@ We have explored a few years worth of inventory data and attempted to model thei
 
 <img align="right" width="290" height="289" src="images/IMG_2431_circular.png" hspace="25">
 
-My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and online advertising industry. I had the opportunity to work on predicting viewability of digital ads to improve advertiser spending.
+My name is Emmanuel Contreras-Campana. I received a Ph.D. in experimental high energy physics searching for anomalous production of multilepton events in proton-proton collision at the LHC complex collected by CMS collaboration. I am seeking opportunities in big data analytics in the financial, technology, or health industries. My passion is working with complicated datasets that require rigorous transformations and cleaning in the interest of extracting useful insights that have substantive business value. Last summer, I completed a data science internship at TripleLift. They are in the marketing and online advertising industry. I had the chance to work on predicting viewability of digital ads to improve advertiser spending.
