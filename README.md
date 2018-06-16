@@ -24,7 +24,7 @@ Insight Data Science is an intensive postdoctoral training fellowship that bridg
 <img src ="images/computer.jpg" width="438" height="275" /><img src ="images/online closet.jpg" width="240" height="275" />
 </div>
 
-I was tasked with creating a recommendation system to help garment lenders know which of their items will be rented most frequently, allowing the client to offer more popular items. This will enhancing user experience and increasing company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by lenders — brand name, item type, apparel size, and rental price.
+I was tasked with creating a recommendation system to help garment lenders know which of their items will be rented most frequently, allowing the client to offer more popular items. This will enhance user experience and increase company revenue. I trained a logistic regression model that predicts how likely garments will be rented based exclusively on information provided by lenders — brand name, item type, apparel size, and rental price.
 
 *For the purposes of anonymity, _Borrow My Style_ is a pseudonym for the consulting client.
 
@@ -52,7 +52,7 @@ We focus on engineering new features that will advance us towards a predictive m
 
 ## Apparel Sizes
 
-Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical, for example, "XS", "S", etc.. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels that exist into a numerical value. Had the converse been true, we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the diverse brands and leave this as an underlying assumption of our modeling.
+Apparel sizes can be numerical, ranging from zero and upwards, but in some instances they may be categorical. Most sizes in the data are reported as a number and, therefore, we will choose to transform the few categorical labels that exist into a numerical value. Had the converse been true, we would have converted the numerical values into categorical labels. Individual ranges for "XS", "S", and "M" may be found online. For simplicity, we did not take into account the vanity sizes of the diverse brands and leave this as an underlying assumption of our modeling.
 
 A minority of samples have their apparel sizes missing. For these cases, we replaced the missing value by the most frequent size in their respective item type, for example, the most common dress size was 4. This choice made the most sense when taking a look at the distribution of dress sizes.
 
@@ -89,14 +89,14 @@ Items that have never rented at any point in time are classified as "Low" perfor
 [Modeling rentability (notebook)](https://nbviewer.jupyter.org/github/ecampana/borrow-my-style/blob/master/modeling-rentability.ipynb)
 
 
-We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on brand name, item type, apparel size, and rental price. The reason we are restricting ourselves to these particular features is that lenders will be able to provide this information for us.
+We are now ready to model inventory trends for our client company. The main focus here will be to explore different machine learning algorithms to predict item performance based on brand name, item type, apparel size, and rental price. The reason we are restricting ourselves to these particular features is that lenders will be able to provide this information to us.
 
 
 ## Modeling of Inventory Performance
 
 We explore several machine learning models that are inherently multi-class classifiers. Models that are interpretable are preferred for implementation, while less interpretable models are used as benchmarks.
 
-Looking at the distribution of rentability rates in Figure 1, we can see that there are far more apparels that fall in the low rentability category than in the moderate or high rentability categories. Classification models perform best when every bin contains a similar number of samples. Therefore, we artificially increase the number of samples in the moderate and high rentability bins through a process known as bootstrapping (i.e. oversampling with replacement of the minority class). The hyper-parameters of the classifier algorithm will be optimized and cross-validated using the Logarithmic Loss function (i.e log loss). Log loss heavily penalizes any strongly mis-classified prediction, and for this reason it was chosen as our objective function to minimise.
+Looking at the distribution of rentability rates in Figure 1, we can see that there are far more apparels that fall in the low rentability category than in the moderate or high rentability categories. Classification models perform best when every bin contains a similar number of samples. Therefore, we artificially increase the number of samples in the moderate and high rentability bins through a process known as bootstrapping (i.e. oversampling with replacement of the minority class). The hyper-parameters of the classifier algorithm will be optimized and cross-validated using the Logarithmic Loss function (i.e log loss). Log loss heavily penalizes any strongly mis-classified prediction, and for this reason it was chosen as our objective function to minimize.
 
 
 ### Dummy Classification
