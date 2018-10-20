@@ -1,5 +1,7 @@
 # Borrow My Style
 
+[github pages link] (https://ecampana.github.io/borrow-my-style/)
+
 ---
 ## Contents
 
